@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
+import companies from "../data/companies.json"
 
 const LandingPage = () => {
     return (
@@ -38,12 +40,24 @@ const LandingPage = () => {
                             </a>
                     </div>
                 </Link>
-
-                {/* carousel */}
             </div>
 
             <section>
+                {/* carousel */}
                 {/* cards */}
+                <Carousel className={"w-full py-10"}>
+                    <CarouselContent>
+                        {companies.map(() => {
+
+                                return (
+                                    <CarouselItem>
+                                        
+                                    </CarouselItem>
+                                )
+                            }
+                        )}
+                    </CarouselContent>
+                </Carousel>
             </section>
 
             {/* accordion */}
