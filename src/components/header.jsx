@@ -9,23 +9,22 @@ import { UserButton } from '@clerk/clerk-react';
 const Header = () => {
     return (
         <>
-            <nav className='py-3 px-2  items-center flex justify-between text-white/80'>
-                <div className='flex justify-items-start gap-1'>
+            <nav className='py-3 px-2  items-center flex justify-between text-'>
+                <div className='flex justify-items-start gap-1 text-pink-400'>
                     <Link>
                         <img src="/koi-fish.png" className='h-10' alt="logo" />
                     </Link>
-                    <div className='mt-1 text-2xl'>Bettafish</div>
                 </div>
 
-                {/* <Button variant="outline"> Login </Button> */}
+                <Button variant="outline"> Login </Button>
 
-                    <SignedOut>
+                    {/* <SignedOut>
                         <SignInButton />
                     </SignedOut>
 
                     <SignedIn>
                         <UserButton />
-                    </SignedIn>
+                    </SignedIn> */}
             </nav>
         </>
     );
