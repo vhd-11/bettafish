@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { Link, useSearchParams } from 'react-router-dom';
 import { Button } from './ui/button';
 import { SignedIn, SignIn } from '@clerk/clerk-react';
 import { SignedOut } from '@clerk/clerk-react';
@@ -11,6 +11,21 @@ import { useState } from 'react';
 const Header = () => {
     const [showSignIn, setShowSignIn] = useState(false);
 
+    // eslint-disable-next-line no-unused-vars
+    const[search, setSearch]=useSearchParams();
+
+    useEffect(()=> {
+        if(search.get('sign-in')){
+            setShowSignIn(true);
+        }
+    },[search])
+
+    // disappear sign in when clicking outside sign in
+    const handleOverlayClick =(e) =>{
+        if (e.target === e.currentTarget){
+            setShowSignIn(false);
+        }
+    }
 
     return (
         <>
@@ -40,12 +55,16 @@ const Header = () => {
             </nav>
 
             {
-                showSignIn && <div>
+                showSignIn && 
+                (<div className='absolute inset-0 flex items-center justify-center bg-black/20 z-1'
+                onClick={handleOverlayClick}
+                >
                     <SignIn 
                         signUpForceRedirectUrl='/onboarding'
                         fallbackRedirectUrl='/onboarding'
                     />
                 </div>
+                )
             }
         </>
     );
