@@ -18,7 +18,7 @@ To set up the project locally, follow these steps:
 
 Ensure you have the following dependencies installed:
 
-- Node.js (version X.X)
+- Node.js 
 - npm or yarn
 - A Supabase account for the database
 - Clerk account for user authentication
@@ -42,12 +42,6 @@ Ensure you have the following dependencies installed:
    ```bash
    npm run dev  # or equivalent command based on your framework
    ```
-
-## Usage
-
-- Employers can log in and post job listings.
-- Job seekers can browse, filter, and apply for jobs.
-- Admin users can manage job listings and user accounts.
 
 ## Configuration
 
