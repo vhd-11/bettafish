@@ -30,13 +30,13 @@ const LandingPage = () => {
         })
     }
 
-    useEffect(() => {
-        if (user?.unsafeMetadata?.role){
-            navigate(
-                user?.unsafeMetadata?.role === "recruiter" ? "/post-job"  : "/jobs"
-            )
-        }
-    },[user])
+    // useEffect(() => {
+    //     if (user?.unsafeMetadata?.role){
+    //         navigate(
+    //             user?.unsafeMetadata?.role === "recruiter" ? "/post-job"  : "/jobs"
+    //         )
+    //     }
+    // },[user])
 
 
     return (

@@ -21,8 +21,8 @@ const ProtectedRoute = ({ children }) => {
 
     // TODO check onboarding status
 
-if (user!== undefined && !user?.unsafeMetadata?.role && pathName!=='/onboarding')
-    {return <Navigate to="/onboarding" />}
+if (user!== undefined && !user?.unsafeMetadata?.role && pathName!=='/')
+    {return <Navigate to="/" />}
     
 
 
