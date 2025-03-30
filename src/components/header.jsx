@@ -11,7 +11,6 @@ import { useState } from 'react';
 const Header = () => {
     const [showSignIn, setShowSignIn] = useState(false);
 
-    // eslint-disable-next-line no-unused-vars
     const[search, setSearch]=useSearchParams();
 
     useEffect(()=> {

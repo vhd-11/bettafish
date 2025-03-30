@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         path: "/onboarding",
         element: (
           <ProtectedRoute>
-            element: <Onboarding />
+            <Onboarding />
           </ProtectedRoute>
         ),
       },
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
             <JobListing />
           </ProtectedRoute>
         ),
-        element: <JobListing />
+
       },
       {
         path: "/my-job",

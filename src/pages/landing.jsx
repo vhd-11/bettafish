@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import companies from "../data/companies.json"
@@ -12,7 +11,9 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 
+
 const LandingPage = () => {
+
     return (
         <main className='flex flex-col gap-10 sm:gap-20 py-15 sm:py-20 text-white/85'>
             <section className='text-center'>
