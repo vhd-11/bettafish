@@ -18,14 +18,15 @@ const Header = () => {
         if(search.get('sign-in')){
             setShowSignIn(true);
         }
-    },[search])
+    },[search]);
 
     // disappear sign in when clicking outside sign in
     const handleOverlayClick =(e) =>{
         if (e.target === e.currentTarget){
             setShowSignIn(false);
+            setSearch({});
         }
-    }
+    };
 
     return (
         <>
