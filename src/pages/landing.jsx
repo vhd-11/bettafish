@@ -1,4 +1,6 @@
 import React from 'react'
+import { useUser } from '@clerk/clerk-react'
+import { useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import companies from "../data/companies.json"
@@ -10,14 +12,37 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
-
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const LandingPage = () => {
+    const {user } = useUser();
+    const navigate=useNavigate();
+
+    const handleRoleSelection=async(role)=>{
+        await user.update({
+            unsafeMetadata: { role },
+        }).then(()=>{
+            navigate(role === "recruiter" ? "/post-job" : "/jobs")
+        })
+        .catch((err) => {
+            console.error("Error updating role: ",err)
+        })
+    }
+
+    useEffect(() => {
+        if (user?.unsafeMetadata?.role){
+            navigate(
+                user?.unsafeMetadata?.role === "recruiter" ? "/post-job"  : "/jobs"
+            )
+        }
+    },[user])
+
 
     return (
         <main className='flex flex-col gap-10 sm:gap-20 py-15 sm:py-20 text-white/85'>
             <section className='text-center'>
-                <p className=' flex flex-col items-center text-6xl font-dark text-white mb-3 sm:text-7xl lg:text-8xl'>
+                <p className=' flex flex-col items-center text-7xl font-dark text-white mb-3 sm:text-5xl lg:text-9xl'>
                     Reinovating the
                     <span className='italic'>Job Hunt</span>
                 </p>
@@ -30,7 +55,9 @@ const LandingPage = () => {
             <div className='flex justify-center items-start gap-8'>
                 <Link to="/jobs">
                     <div>
-                        <a href="#_" class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-pink-300 rounded-full shadow-md group bg-pink-400">
+                        <a onClick={() => {
+                            handleRoleSelection("candidate")
+                        }} class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-pink-300 rounded-full shadow-md group bg-pink-400">
                             <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-220 -translate-x-full bg-pink-400 group-hover:translate-x-0 ease">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </span>
@@ -42,7 +69,9 @@ const LandingPage = () => {
 
                 <Link to="/post-job">
                     <div>
-                        <a href="#_" class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-pink-300 rounded-full shadow-md group bg-pink-400">
+                        <a onClick={() => {
+                            handleRoleSelection("recruiter")
+                        }} class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-pink-300 rounded-full shadow-md group bg-pink-400">
                             <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-220 -translate-x-full bg-pink-400 group-hover:translate-x-0 ease">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </span>

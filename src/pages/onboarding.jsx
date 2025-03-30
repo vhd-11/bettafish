@@ -1,5 +1,5 @@
 import { useUser } from '@clerk/clerk-react'
-import React from 'react'
+import React, { useEffect } from 'react'
 import BarLoader from "react-spinners/BarLoader";
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button'
@@ -31,6 +31,14 @@ const Onboarding = () => {
         })
     }
 
+    useEffect(() => {
+        if (user?.unsafeMetadata?.role){
+            navigate(
+                user?.unsafeMetadata?.role === "recruiter" ? "/post-job"  : "/jobs"
+            )
+        }
+    },[user])
+
     if (!isLoaded){
         return <BarLoader className='m-auto mt-50' width={"66rem"} color={"#F471B6"} />
     }
@@ -51,11 +59,11 @@ const Onboarding = () => {
             <div className='flex justify-center items-start gap-8'>
                 <Link to="/jobs">
                     <div>
-                        <a href="#_" class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-pink-300 rounded-full shadow-md group bg-pink-400">
+                        <a class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-pink-300 rounded-full shadow-md group bg-pink-400">
                             <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-220 -translate-x-full bg-pink-400 group-hover:translate-x-0 ease">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </span>
-                            <span class="absolute flex items-center justify-center w-full h-full text-pink-00 transition-all duration-400 transform group-hover:translate-x-full ease bg-pink-400" onClick={() => handleRoleSelection()}
+                            <span class="absolute flex items-center justify-center w-full h-full text-pink-00 transition-all duration-400 transform group-hover:translate-x-full ease bg-pink-400" onClick={() => handleRoleSelection("candidate")} 
                             >Candidate</span>
                             <span class="relative invisible">Candidate</span>
                         </a>
@@ -64,12 +72,12 @@ const Onboarding = () => {
 
                 <Link to="/post-job">
                     <div>
-                        <a href="#_" class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-pink-300 rounded-full shadow-md group bg-pink-400">
+                        <a class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-pink-300 rounded-full shadow-md group bg-pink-400">
                             <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-220 -translate-x-full bg-pink-400 group-hover:translate-x-0 ease">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </span>
-                            <span class="absolute flex items-center justify-center w-full h-full text-pink-00 transition-all duration-300 transform group-hover:translate-x-full ease bg-pink-400">Employer</span>
-                            <span class="relative invisible" onClick={() => handleRoleSelection()}
+                            <span class="absolute flex items-center justify-center w-full h-full text-pink-00 transition-all duration-300 transform group-hover:translate-x-full ease bg-pink-400" onClick={() => handleRoleSelection("recruiter")} >Employer</span>
+                            <span class="relative invisible"
                             >Employer</span>
                         </a>
                     </div>

@@ -5,11 +5,11 @@ import { Navigate, useLocation } from 'react-router-dom';
 // redirect user tosign-in no matter the location
 const ProtectedRoute = ({ children }) => {
     // takes all user details and signedinstate
-    // eslint-disable-next-line no-unused-vars
+
     const { isSignedIn, user, isLoaded } = useUser();
 
     // takes path user is at rn
-            // eslint-disable-next-line no-unused-vars
+
     const { pathName } = useLocation();
 
 
@@ -20,6 +20,13 @@ const ProtectedRoute = ({ children }) => {
 
 
     // TODO check onboarding status
+
+if (user!== undefined && !user?.unsafeMetadata?.role && pathName!=='/onboarding')
+    {return <Navigate to="/onboarding" />}
+    
+
+
+
     return children;
 
 };
