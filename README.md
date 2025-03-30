@@ -9,6 +9,23 @@ BettaFish is a job board platform where employers can post job openings, and job
 - **User Authentication** – Separate login for job seekers and employers using Clerk for user authentication.
 - **Application Process** – A system that allows job seekers to apply to jobs seamlessly.
 - **Admin Panel** – Basic admin functionalities to manage job postings and user activities.
+  
+## Tech Stack
+
+- **Frontend**:  
+  - **React**: For building the user interface and managing components.
+  - **ShadCN UI**: A UI library for building consistent and customizable design elements.
+  - **HTML/CSS**: For structuring and styling the application.
+  - **JavaScript**: For frontend logic and interactivity.
+
+- **Backend**:  
+  - **Node.js**: For handling server-side logic and API requests.
+  - **Supabase**: Provides backend services such as authentication, real-time database, and storage.
+  - **Clerk**: For user authentication and management (login, signup, roles).
+
+- **Other Tools**:  
+  - **GitHub**: Version control and collaboration.
+  - **npm/yarn**: For managing project dependencies.
 
 ## Installation
 
