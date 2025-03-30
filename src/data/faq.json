@@ -1,0 +1,46 @@
+[
+    {
+        "question": "What is BettaFish?",
+        "answer": "BettaFish is a job portal that connects job seekers with employers, allowing companies to post job listings and candidates to search and apply for jobs easily."
+    },
+    {
+        "question": "How do I create an account on BettaFish?",
+        "answer": "You can sign up as a job seeker or employer by clicking on 'Sign Up' on the homepage. Fill in the required details and verify your email to create an account."
+    },
+    {
+        "question": "How can I post a job listing?",
+        "answer": "As an employer, log in to your account, navigate to the 'Post a Job' section, fill in the job details, and submit the form to list your job opening."
+    },
+    {
+        "question": "How do job seekers apply for jobs?",
+        "answer": "Job seekers can browse job listings, click on a job they’re interested in, and follow the instructions to apply. Some jobs may require uploading a resume or filling an application."
+    },
+    {
+        "question": "Is BettaFish free to use?",
+        "answer": "Yes, job seekers can search and apply for jobs for free. Employers may have free and premium job posting options depending on their needs."
+    },
+    {
+        "question": "How can I edit my job post?",
+        "answer": "Employers can edit job posts by navigating to their dashboard, selecting the job listing, and clicking 'Edit' to update job details before saving the changes."
+    },
+    {
+        "question": "How do I delete a job listing?",
+        "answer": "Employers can delete a job post from their dashboard by selecting the listing and choosing the 'Delete' option."
+    },
+    {
+        "question": "Can I receive job alerts?",
+        "answer": "Yes, job seekers can enable job alerts by setting preferences in their profile to receive notifications about relevant job opportunities."
+    },
+    {
+        "question": "How do I contact an employer?",
+        "answer": "If an employer allows direct contact, job seekers can find their contact details in the job listing or communicate through the platform’s messaging system."
+    },
+    {
+        "question": "How do I reset my password?",
+        "answer": "Click on 'Forgot Password' on the login page, enter your email, and follow the instructions in the reset link sent to your inbox."
+    },
+    {
+        "question": "Can employers filter job applicants?",
+        "answer": "Yes, employers can use filters such as experience level, skills, and location to shortlist candidates efficiently."
+    }
+]
