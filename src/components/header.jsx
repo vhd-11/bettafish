@@ -5,7 +5,7 @@ import { SignedIn, SignIn } from '@clerk/clerk-react';
 import { SignedOut } from '@clerk/clerk-react';
 import { SignInButton } from '@clerk/clerk-react';
 import { UserButton } from '@clerk/clerk-react';
-import { PenBox } from 'lucide-react';
+import { BookmarkPlusIcon, BriefcaseBusiness, BriefcaseBusinessIcon, PenBox } from 'lucide-react';
 import { useState } from 'react';
 
 const Header = () => {
@@ -49,7 +49,27 @@ const Header = () => {
                             Post Job
                         </Button>
                         <Link to="/post-job"></Link>
-                        <UserButton />
+                        <UserButton 
+                        appearance={{
+                                elements: {
+                                    avatarBox: "mr-3 w-20 h-20",
+                                },
+                            }
+                        }
+                        >
+                            <UserButton.MenuItems>
+                                <UserButton.Link
+                                    label = "My Jobs"
+                                    labelIcon={<BriefcaseBusinessIcon size={15} />}
+                                    href='/my-jobs'
+                                />
+                                <UserButton.Link 
+                                label = "Saved Jobs"
+                                labelIcon={<BookmarkPlusIcon size={15} />}
+                                href='/saved-job'
+                                />
+                            </UserButton.MenuItems>
+                        </UserButton>
                     </SignedIn>
                 </div>
             </nav>
