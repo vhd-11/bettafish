@@ -55,11 +55,12 @@ Ensure you have the following dependencies installed:
    - Supabase API keys and URLs
    - Clerk API keys
    - Other API keys or secrets
+     
 4. Start the development server:
    ```bash
    npm run dev  # or equivalent command based on your framework
    ```
-
+   
 ## Configuration
 
 - `.env` file for storing environment variables such as database URI, Clerk API keys, and secret keys.
