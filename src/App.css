@@ -6,7 +6,7 @@
   height: 100%;
   background-color: rgb(232, 153, 220);
   background-color: #da66c8;
-  background-image: linear-gradient(33deg, #e899dc 0%, #fec9f1 59%, #ffcd70b8 100%);
+  background-image: linear-gradient(33deg, #e899dc 0%, #fec9f1 79%, #ffcd70 100%);
 
   /* background-size: 50px 50px; */
   pointer-events: none;
