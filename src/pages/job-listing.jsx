@@ -13,7 +13,9 @@ const JobListing = () => {
         });
         const data = await getJobs(supabaseAccessToken);
 
+        // TODO: fix the error of data not appearing on console
         console.log(data);
+
     };
 
     useEffect(() => {
