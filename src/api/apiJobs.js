@@ -1,6 +1,6 @@
 import supabaseClient from "@/utils/supabase";
 
-export async function getJobs(token,){
+export async function getJobs(token){
     const supabase = await supabaseClient(token);
 
     let query = supabase.from("jobs").select("*");
@@ -12,5 +12,9 @@ export async function getJobs(token,){
         return null;
     }
 
+    // console.log(token);
+    // console.log("Fetched jobs: ", data);
+
     return data;
+
 }

@@ -23,7 +23,7 @@ const LandingPage = () => {
         await user.update({
             unsafeMetadata: { role },
         }).then(()=>{
-            navigate(role === "recruiter" ? "/post-job" : "/jobs")
+            navigate(role === "recruiter" ? "/post-job" : "/job-listing")
         })
         .catch((err) => {
             console.error("Error updating role: ",err)
@@ -33,7 +33,7 @@ const LandingPage = () => {
     // useEffect(() => {
     //     if (user?.unsafeMetadata?.role){
     //         navigate(
-    //             user?.unsafeMetadata?.role === "recruiter" ? "/post-job"  : "/jobs"
+    //             user?.unsafeMetadata?.role === "recruiter" ? "/post-job"  : "/job-listing"
     //         )
     //     }
     // },[user])
@@ -53,7 +53,7 @@ const LandingPage = () => {
 
             {/* buttons */}
             <div className='flex justify-center items-start gap-8'>
-                <Link to="/jobs">
+                <Link to="/job-listing">
                     <div>
                         <a onClick={() => {
                             handleRoleSelection("candidate")

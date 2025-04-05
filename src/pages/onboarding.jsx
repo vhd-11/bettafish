@@ -24,7 +24,7 @@ const Onboarding = () => {
         await user.update({
             unsafeMetadata: { role },
         }).then(()=>{
-            navigate(role === "recruiter" ? "/post-job" : "/jobs")
+            navigate(role === "recruiter" ? "/post-job" : "/job-listing")
         })
         .catch((err) => {
             console.error("Error updating role: ",err)
@@ -34,7 +34,7 @@ const Onboarding = () => {
     useEffect(() => {
         if (user?.unsafeMetadata?.role){
             navigate(
-                user?.unsafeMetadata?.role === "recruiter" ? "/post-job"  : "/jobs"
+                user?.unsafeMetadata?.role === "recruiter" ? "/post-job"  : "/job-listing"
             )
         }
     },[user])
@@ -57,7 +57,7 @@ const Onboarding = () => {
 
             {/* buttons */}
             <div className='flex justify-center items-start gap-8'>
-                <Link to="/jobs">
+                <Link to="/job-listing">
                     <div>
                         <a class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-pink-300 rounded-full shadow-md group bg-pink-400">
                             <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-220 -translate-x-full bg-pink-400 group-hover:translate-x-0 ease">

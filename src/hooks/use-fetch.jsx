@@ -16,7 +16,7 @@ const useFetch = (cb, options = {}) => {
 
         try {
             const supabaseAccessToken = await session.getToken({
-                template: "supabase",
+                template: "bettafish_supabase",
             });
 
             // fetch data from api
@@ -33,7 +33,7 @@ const useFetch = (cb, options = {}) => {
 
     };
 
-return (fn, data, loading, error);
+return {fn, data, loading, error};
 
 };
 
