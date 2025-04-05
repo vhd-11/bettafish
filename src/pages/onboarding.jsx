@@ -1,6 +1,6 @@
 import { useUser } from '@clerk/clerk-react'
 import React, { useEffect } from 'react'
-import BarLoader from "react-spinners/BarLoader";
+import ClipLoader from "react-spinners/ClipLoader";
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
@@ -17,32 +17,36 @@ import {
 
 const Onboarding = () => {
 
-    const {user, isLoaded } = useUser();
-    const navigate=useNavigate();
+    const { user, isLoaded } = useUser();
+    const navigate = useNavigate();
 
-    const handleRoleSelection=async(role)=>{
+    const handleRoleSelection = async (role) => {
         await user.update({
             unsafeMetadata: { role },
-        }).then(()=>{
+        }).then(() => {
             navigate(role === "recruiter" ? "/post-job" : "/job-listing")
         })
-        .catch((err) => {
-            console.error("Error updating role: ",err)
-        })
+            .catch((err) => {
+                console.error("Error updating role: ", err)
+            })
     }
 
     useEffect(() => {
-        if (user?.unsafeMetadata?.role){
+        if (user?.unsafeMetadata?.role) {
             navigate(
-                user?.unsafeMetadata?.role === "recruiter" ? "/post-job"  : "/job-listing"
+                user?.unsafeMetadata?.role === "recruiter" ? "/post-job" : "/job-listing"
             )
         }
-    },[user])
+    }, [user])
 
-    if (!isLoaded){
-        return <BarLoader className='m-auto mt-50' width={"66rem"} color={"#F471B6"} />
+    if (!isLoaded) {
+        const override = {
+            display: "block",
+            margin: "auto",
+        };
+        return <ClipLoader width={"5rem"} radius={"5rem"} cssOverride={override} color={"#F471B6"} />
     }
-    
+
     return (
         <main className='flex flex-col gap-10 sm:gap-20 py-15 sm:py-20 text-white/85'>
             <section className='text-center'>
@@ -63,7 +67,7 @@ const Onboarding = () => {
                             <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-220 -translate-x-full bg-pink-400 group-hover:translate-x-0 ease">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </span>
-                            <span class="absolute flex items-center justify-center w-full h-full text-pink-00 transition-all duration-400 transform group-hover:translate-x-full ease bg-pink-400" onClick={() => handleRoleSelection("candidate")} 
+                            <span class="absolute flex items-center justify-center w-full h-full text-pink-00 transition-all duration-400 transform group-hover:translate-x-full ease bg-pink-400" onClick={() => handleRoleSelection("candidate")}
                             >Candidate</span>
                             <span class="relative invisible">Candidate</span>
                         </a>
@@ -108,18 +112,18 @@ const Onboarding = () => {
             <Accordion className='py-7 px-6 mx-10 sm:mx-13 sm:px-13 bg-rose-300/35 shadow-2xl' type="single" collapsible>
                 {faq.map((faqIt, index) => {
                     return (
-                    <AccordionItem className='text-white' key={index} value={`item-${index + 1}`}>
-                        <AccordionTrigger className='sm:text-base'>{faqIt.question}</AccordionTrigger>
-                        <AccordionContent>
-                            {faqIt.answer}
-                        </AccordionContent>
-                    </AccordionItem>
+                        <AccordionItem className='text-white' key={index} value={`item-${index + 1}`}>
+                            <AccordionTrigger className='sm:text-base'>{faqIt.question}</AccordionTrigger>
+                            <AccordionContent>
+                                {faqIt.answer}
+                            </AccordionContent>
+                        </AccordionItem>
                     );
                 })
                 }
 
             </Accordion>
-            </main>
+        </main>
     )
 }
 

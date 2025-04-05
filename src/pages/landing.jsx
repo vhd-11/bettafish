@@ -1,6 +1,6 @@
 import React from 'react'
 import { useUser } from '@clerk/clerk-react'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import companies from "../data/companies.json"
