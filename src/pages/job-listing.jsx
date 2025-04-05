@@ -1,25 +1,17 @@
 import { getJobs } from '@/api/apiJobs'
-import { useSession } from '@clerk/clerk-react'
-import React from 'react'
-import { useEffect } from 'react'
+import useFetch from '@/hooks/use-fetch'
+import React, { useEffect } from 'react'
 
 const JobListing = () => {
 
-    const {session} = useSession()
 
-    const fetchJobs = async() => {
-        const supabaseAccessToken = await session.getToken({
-            template: "supabase",
-        });
-        const data = await getJobs(supabaseAccessToken);
+    const { fn: fnJobs, data: dataJobs, loading: loadingJobs } = useFetch(getJobs, {});
 
-        // TODO: fix the error of data not appearing on console
-        console.log(data);
 
-    };
+    console.log(dataJobs);
 
     useEffect(() => {
-        fetchJobs();
+        fnJobs();
     }, [])
 
     return (
