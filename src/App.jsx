@@ -3,7 +3,7 @@ import "./App.css"
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AppLayout from './layouts/app-layout';
 import LandingPage from './pages/landing';
-// import Onboarding from './pages/onboarding';
+import Onboarding from './pages/onboarding';
 import JobListing from './pages/job-listing';
 import JobPage from './pages/job';
 import MyJob from './pages/my-job';
@@ -20,14 +20,14 @@ const router = createBrowserRouter([
         path: "/",
         element: <LandingPage />,
       },
-      // {
-      //   path: "/onboarding",
-      //   element: (
-      //     <ProtectedRoute>
-      //       <Onboarding />
-      //     </ProtectedRoute>
-      //   ),
-      // },
+      {
+        path: "/onboarding",
+        element: (
+          <ProtectedRoute>
+            <Onboarding />
+          </ProtectedRoute>
+        ),
+      },
       {
         path: "/job-listing",
         element: (
