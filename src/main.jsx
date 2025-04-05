@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+// import { StrictMode } from 'react'
 // import { createRoot } from 'react-dom/client'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
@@ -17,9 +17,6 @@ if (!PUBLISHABLE_KEY) {
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ClerkProvider 
-    // appearance={{
-    //   baseTheme: dark,
-    // }}
     publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
       <App />
     </ClerkProvider>
