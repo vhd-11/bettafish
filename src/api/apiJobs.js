@@ -52,9 +52,12 @@ export async function saveJob(token, { alreadySaved }, saveData) {
             .insert([saveData])
             .select()
 
-            if (insertError) {
-                console.error("Error inserting saved jobs: ", insertError);
-                return null;
-            }
+        if (insertError) {
+            console.error("Error inserting saved jobs: ", insertError);
+            return null;
+        }
+
+        return data;
+
     }
 }
