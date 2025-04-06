@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useSession } from '@clerk/clerk-react';
 import { useState } from 'react';
 import { ClipLoader } from 'react-spinners';
-import JobCard from 
+import JobCard from '@/components/ui/jobcard'
 
 const JobListing = () => {
     const override = {
