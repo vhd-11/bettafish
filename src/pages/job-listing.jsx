@@ -44,12 +44,11 @@ const JobListing = () => {
 
         fetchTokenAndJobs(); // run when session becomes available
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isLoaded, session, location, company_id, searchQuery]); // <---
-    //  important!    
+    }, [isLoaded, session, location, company_id, searchQuery]); 
 
     useEffect(() => {
         if (dataJobs) {
-            console.log("📦 Final Job Data:", dataJobs);
+            console.log("!!! Final Job Data:", dataJobs);
         }
     }, [dataJobs]);
 
@@ -73,7 +72,9 @@ const JobListing = () => {
                 <div className='mt-8 grid md: grid-cols-2 lg:grid-cols-3 gap-4 p-6'>
                     {dataJobs?.length ? (
                         dataJobs.map((job) => {
-                            return <JobCard key = {job.id} job={job} />
+                            return <JobCard key = {job.id} job={job}
+                            
+                            savedInit = {job?.saved?.length > 0}/>
                         })
                     ) : (
                         <div> No Jobs Found ☹️ </div>
