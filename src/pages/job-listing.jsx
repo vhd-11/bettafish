@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 import JobCard from '@/components/ui/jobcard'
 import { getCompanies } from '@/api/apiCompanies';
+import { Input } from '@/components/ui/input';
 
 const JobListing = () => {
     const override = {
@@ -62,6 +63,10 @@ const JobListing = () => {
         }
     }, [dataJobs]);
 
+    const handleSearch=()=>{
+
+    }
+
     if (!isLoaded) {
         return <ClipLoader width={"5rem"} radius={"5rem"} cssOverride={override} color={"#F471B6"} />
     }
@@ -72,7 +77,12 @@ const JobListing = () => {
                 Latest Jobs
             </div>
 
+            <form onSubmit={handleSearch}></form>
+            <input type='text' placeholder='Search for jobs' className='flex-1 px-4 text-base bg-transparent border-2 border-pink-300 focus:outline focus:border-pink-300 focus:outline-pink-300 m-5 mt-7 w-full rounded-3xl h-9 focus:border-1.7'>
+            </input>
+
             {/* TODO: add filters here */}
+            
 
             {loadingJobs && (
                 <ClipLoader radius={"40px"} mt-5 cssOverride={override} color={"#F471B6"} />
