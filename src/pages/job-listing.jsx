@@ -7,6 +7,7 @@ import { ClipLoader } from 'react-spinners';
 import JobCard from '@/components/ui/jobcard'
 import { getCompanies } from '@/api/apiCompanies';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 const JobListing = () => {
     const override = {
@@ -63,8 +64,13 @@ const JobListing = () => {
         }
     }, [dataJobs]);
 
-    const handleSearch=()=>{
+    const handleSearch=(e)=>{
+        e.preventDefault();
+        let formData = new formData(e.target);
 
+        const query = formData.get("search-query")
+
+        if(query) setSearchQuery(query)
     }
 
     if (!isLoaded) {
@@ -78,12 +84,18 @@ const JobListing = () => {
             </div>
 
             <form onSubmit={handleSearch}></form>
+
+            <div class='flex mt-10 ml-5 justify-center gap-4 items-center'>
             <Input 
             type='text'
             placeholder='Search for job'
-            className={'placeholder:text-slate-400/70 focus:outline-none bg-white/95 rounded-4xl lg:h-12 sm:w-3/7 lg:w-2/7 lg:placeholder:text-sm sm:placeholder:text-xs sm:h-8 mt-10 ml-5'}
+            className={'placeholder:text-slate-400/70 focus:outline-none outline-none border-none bg-white/95 rounded-4xl lg:h-11 sm:w-3/7 lg:w-2/7 lg:placeholder:text-sm sm:placeholder:text-xs sm:h-8'}
             />
 
+            <Button type='submit' className={'h-full sm:w-24 lg:w-30 lg:h-10'} variant='default'>
+                Search
+            </Button>
+            </div>
             {/* TODO: add filters here */}
             
 
