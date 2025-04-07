@@ -78,8 +78,11 @@ const JobListing = () => {
             </div>
 
             <form onSubmit={handleSearch}></form>
-            <input type='text' placeholder='Search for jobs' className='flex-1 px-4 text-base bg-transparent border-2 border-pink-300 focus:outline focus:border-pink-300 focus:outline-pink-300 m-5 mt-7 w-full rounded-3xl h-9 focus:border-1.7'>
-            </input>
+            <Input 
+            type='text'
+            placeholder='Search for job'
+            className={'placeholder:text-slate-400/70 focus:outline-none bg-white/95 rounded-4xl lg:h-12 sm:w-3/7 lg:w-2/7 lg:placeholder:text-sm sm:placeholder:text-xs sm:h-8 mt-10 ml-5'}
+            />
 
             {/* TODO: add filters here */}
             
