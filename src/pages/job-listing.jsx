@@ -89,25 +89,27 @@ const JobListing = () => {
 
             <form onSubmit={handleSearch} className='flex mt-10 ml-5 justify-center gap-4 items-center'>
                 <div className='relative'>
-            <Button type='submit' className={'absolute left-0 top-0 bottom-0 px-3 lg:h-11 sm:h-8 sm:w-10 lg:w-13 cursor-pointer'} variant='default'>
+            <Button type='submit' className={'absolute left-0.1 top-0 bottom-0 px-3 lg:h-10 sm:h-8 sm:w-10 lg:w-13 cursor-pointer rounded-4xl bg-pink-400/90'} variant='default'>
                     <SearchIcon></SearchIcon>
                 </Button>
                 <Input
                     type='text'
                     placeholder='Search for job'
                     name='search-query'
-                    className={'placeholder:text-slate-400/70 focus:outline-none outline-none border-none bg-white/95 rounded-4xl lg:h-11 sm:h-8 sm:w-50 lg:w-70 pl-12 lg:pl-15 lg:placeholder:text-base lg:text-base sm:placeholder:text-sm sm:text-sm'}
+                    className={'placeholder:text-slate-400/70 focus:outline-none outline-none border-none bg-white/95 rounded-4xl lg:h-10 sm:h-8 sm:w-50 lg:w-70 pl-12 lg:pl-15 lg:placeholder:text-base lg:text-base sm:placeholder:text-sm sm:text-sm'}
                 />
                 </div>
 
                 {/* <div className='ml-5 bg-white'> */}
 
-                <Select value={location} onValueChange={(value) => setLocation(value)}>
-                    <SelectTrigger className='bg-white rounded-4xl'>
+{/* TODO:remove that weird grey ring around locations filter  */}
+{/* TODO: change font size to match viewport */}
+                <Select className='lg:h-20 border-none focus:ring-0 focus-visible:ring-ring/0' value={location} onValueChange={(value) => setLocation(value)}>
+                    <SelectTrigger className='bg-white rounded-4xl lg:text-[15px] sm:text-sm'>
                         <SelectValue placeholder="Location"  />
                     </SelectTrigger>
                     <SelectContent className={'rounded-4xl'}>
-                        <SelectGroup className='bg-white'>
+                        <SelectGroup className='bg-whitetext-black'>
                             {State.getStatesOfCountry("IN"). map(({name}) => {
                                 return (<SelectItem key={name}value={name}>{name}</SelectItem>
                                 );
