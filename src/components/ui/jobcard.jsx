@@ -44,6 +44,7 @@ const JobCard = ({
     if (savedJob !== undefined) setSaved(savedJob?.length > 0);
   }, [savedJob])
 
+  // TODO: implement pagination which creates the option to traverse btwn pages when more than one page is there (refer: shadcn-ui)
   return (
     <Card className={"p-1"}>
       <div className='bg-pink-200/30 rounded-xl m-1 pt-4 pb-4 flex grow flex-col min-w-0 gap-2'>
