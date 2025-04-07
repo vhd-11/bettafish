@@ -103,10 +103,10 @@ const JobListing = () => {
                 {/* <div className='ml-5 bg-white'> */}
 
                 <Select value={location} onValueChange={(value) => setLocation(value)}>
-                    <SelectTrigger className='bg-white'>
+                    <SelectTrigger className='bg-white rounded-4xl'>
                         <SelectValue placeholder="Location"  />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className={'rounded-4xl'}>
                         <SelectGroup className='bg-white'>
                             {State.getStatesOfCountry("IN"). map(({name}) => {
                                 return (<SelectItem key={name}value={name}>{name}</SelectItem>
