@@ -48,7 +48,7 @@ const JobCard = ({
     <Card className={"p-1"}>
       <div className='bg-pink-200/30 rounded-xl m-1 pt-4 pb-4 flex grow flex-col min-w-0 gap-2'>
         <CardHeader>
-            <div className='font-medium sm:text-sm lg:text-xl'>{job.company.name}</div>
+            <div className='font-light sm:text-sm lg:text-base italic'>{job.company.name}</div>
 
           <CardTitle className={"flex justify-between items-baseline font-medium sm:text-lg lg:text-3xl"}>{job.title}
             {isMyJob && (<TrashIcon fill="pink" size={18} className='text-pink-300 cursor-pointer' />
@@ -59,7 +59,7 @@ const JobCard = ({
         </CardHeader>
 
         <CardContent className={"flex gap-4 sm:mt-5 lg:mt-8 flex-col"}>
-          <p className='sm:text-xs md:text-sm lg:text-lg'>
+          <p className='sm:text-xs md:text-sm lg:text-sm'>
             {job.description.substring(0, job.description.indexOf("."))}.
           </p>
         </CardContent>

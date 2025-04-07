@@ -8,6 +8,9 @@ import JobCard from '@/components/ui/jobcard'
 import { getCompanies } from '@/api/apiCompanies';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Select, SelectGroup, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
+import { State } from 'country-state-city';
 
 const JobListing = () => {
     const override = {
@@ -84,21 +87,36 @@ const JobListing = () => {
             </div>
 
             <form onSubmit={handleSearch} className='flex mt-10 ml-5 justify-center gap-4 items-center'>
-                    <Input
-                        type='text'
-                        placeholder='Search for job'
-                        name='search-query'
-                        className={'placeholder:text-slate-400/70 focus:outline-none outline-none border-none bg-white/95 rounded-4xl lg:h-11 sm:w-3/7 lg:w-2/7 lg:placeholder:text-base lg:text-base sm:placeholder:text-sm sm:text-sm sm:h-8 ::selection:text-black ::selection:text-black '}
-                    />
+                <Input
+                    type='text'
+                    placeholder='Search for job'
+                    name='search-query'
+                    className={'placeholder:text-slate-400/70 focus:outline-none outline-none border-none bg-white/95 rounded-4xl lg:h-11 sm:w-3/7 lg:w-2/7 lg:placeholder:text-base lg:text-base sm:placeholder:text-sm sm:text-sm sm:h-8 ::selection:text-black ::selection:text-black '}
+                />
 
-                    <Button type='submit' className={'h-full sm:w-24 lg:w-30 lg:h-10 cursor-pointer'} variant='default'>
-                        Search
-                    </Button>
+                <Button type='submit' className={'h-full sm:w-24 lg:w-30 lg:h-10 cursor-pointer'} variant='default'>
+                    Search
+                </Button>
+
+                {/* <div className='ml-5 bg-white'> */}
+
+                <Select className='bg-white' value={location} onValueChange={(value) => setLocation(value)}>
+                    <SelectTrigger>
+                        <SelectValue placeholder="Filter by location" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectGroup className='bg-white'>
+                            {State.getStatesOfCountry("IN"). map(({name}) => {
+                                return (<SelectItem key={name}value={name}>{name}</SelectItem>
+                                );
+                            })}
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
+            {/* </div> */}
             </form>
 
-            <div>
-                
-            </div>
+        
 
 
             {loadingJobs && (
