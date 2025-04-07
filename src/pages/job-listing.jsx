@@ -5,6 +5,7 @@ import { useSession } from '@clerk/clerk-react';
 import { useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 import JobCard from '@/components/ui/jobcard'
+import { getCompanies } from '@/api/apiCompanies';
 
 const JobListing = () => {
     const override = {
@@ -28,6 +29,15 @@ const JobListing = () => {
         company_id,
         searchQuery,
     });
+
+    const {
+        fn: fnCompanies,
+        data: companies,
+    } = useFetch(getCompanies);
+
+    useEffect(() => {
+        if (isLoaded) fnCompanies();
+    },[isLoaded])
 
     console.log("Data1: ", dataJobs);
 
