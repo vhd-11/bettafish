@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectGroup, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 import { State } from 'country-state-city';
-import { Building2Icon, BuildingIcon, MapPlusIcon, PinIcon, SearchCheckIcon, SearchIcon, SearchSlashIcon } from 'lucide-react';
+import { Building2Icon, BuildingIcon, MapPlusIcon, PinIcon, RemoveFormattingIcon, SearchCheckIcon, SearchIcon, SearchSlashIcon, StarOff, Trash2Icon } from 'lucide-react';
 
 const JobListing = () => {
 
@@ -24,12 +24,17 @@ const JobListing = () => {
     const [location, setLocation] = useState("");
     const [company_id, setCompany_id] = useState("");
 
+    const clearFilters = () => {
+        setSearchQuery("");
+        setCompany_id("");
+        setLocation("");
+    }
 
     const { session, isLoaded } = useSession()
 
     const {
         fn: fnCompanies,
-        data: companies =[],
+        data: companies = [],
     } = useFetch(getCompanies);
 
     const {
@@ -44,6 +49,7 @@ const JobListing = () => {
 
     useEffect(() => {
         if (isLoaded) fnCompanies();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoaded])
 
     console.log("Data1: ", dataJobs);
@@ -135,22 +141,11 @@ const JobListing = () => {
                     </SelectContent>
                 </Select>
 
-                {/* <Select className='lg:h-20 border-none focus:ring-0 focus-visible:ring-ring/0' value={company_id} onValueChange={(value) => setCompany_id(value)}>
-                    <SelectTrigger className='bg-white rounded-4xl lg:text-[15px] sm:text-sm'>
-
-                        <Building2Icon color="#F471B6"></Building2Icon>
-                        <SelectValue placeholder="Company" />
-
-                    </SelectTrigger>
-                    <SelectContent className={'rounded-4xl'}>
-                        <SelectGroup className='bg-whitetext-black'>
-                            {companies.map(({ name, id }) => {
-                                return (<SelectItem key={name} value={id}>{name}</SelectItem>
-                                );
-                            })}
-                        </SelectGroup>
-                    </SelectContent>
-                </Select> */}
+                
+                <Button onClick={clearFilters} variant='default' className={'bg-white font-normal text-slate-500/90 sm:w-1/5 lg:w-1/9 hover:bg-white cursor-pointer'}>
+                <Trash2Icon color='#f471b6'></Trash2Icon>
+                    Clear Filter
+                </Button>
 
             </form>
 
