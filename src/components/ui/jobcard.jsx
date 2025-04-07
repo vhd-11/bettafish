@@ -67,13 +67,13 @@ const JobCard = ({
 
       <CardFooter className={"flex gap-2 justify-between pb-3"}>
         <div className='mt-1 flex items-baseline gap-1'>
-          <MapPinIcon size={15} stroke={"#7D8898"} strokeWidth={2.5} />
-          <p className='m-0 p-0 font-medium text-slate-600/70 text-md'> {job.location} </p>
+          <MapPinIcon size={14} stroke={"#7D8898"} strokeWidth={2.5} />
+          <p className='m-0 p-0 font-medium text-slate-600/70 text-sm'> {job.location} </p>
         </div>
 
         <div className='flex justify-center'>
         <Link to={`/job/${job.id}`}>
-          <Button variant={"default"} className={"w-full cursor-pointer"}>
+          <Button variant={"default"} className={"w-full lg:text-sm sm:text-xs cursor-pointer"}>
             Details
           </Button>
         </Link>
