@@ -103,8 +103,8 @@ const JobListing = () => {
                 {/* <div className='ml-5 bg-white'> */}
 
                 <Select value={location} onValueChange={(value) => setLocation(value)}>
-                    <SelectTrigger>
-                        <SelectValue placeholder="Location" />
+                    <SelectTrigger className='bg-white'>
+                        <SelectValue placeholder="Location"  />
                     </SelectTrigger>
                     <SelectContent>
                         <SelectGroup className='bg-white'>
