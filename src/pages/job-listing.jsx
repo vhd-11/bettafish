@@ -39,7 +39,7 @@ const JobListing = () => {
 
     useEffect(() => {
         if (isLoaded) fnCompanies();
-    },[isLoaded])
+    }, [isLoaded])
 
     console.log("Data1: ", dataJobs);
 
@@ -56,7 +56,7 @@ const JobListing = () => {
 
         fetchTokenAndJobs(); // run when session becomes available
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isLoaded, session, location, company_id, searchQuery]); 
+    }, [isLoaded, session, location, company_id, searchQuery]);
 
     useEffect(() => {
         if (dataJobs) {
@@ -64,14 +64,14 @@ const JobListing = () => {
         }
     }, [dataJobs]);
 
-    const handleSearch=(e)=>{
+    const handleSearch = (e) => {
         e.preventDefault();
-        let formData = new formData(e.target);
+        let formData = new FormData(e.target);
 
         const query = formData.get("search-query")
 
-        if(query) setSearchQuery(query)
-    }
+        if (query) setSearchQuery(query)
+    };
 
     if (!isLoaded) {
         return <ClipLoader width={"5rem"} radius={"5rem"} cssOverride={override} color={"#F471B6"} />
@@ -83,21 +83,23 @@ const JobListing = () => {
                 Latest Jobs
             </div>
 
-            <form onSubmit={handleSearch}></form>
+            <form onSubmit={handleSearch} className='flex mt-10 ml-5 justify-center gap-4 items-center'>
+                    <Input
+                        type='text'
+                        placeholder='Search for job'
+                        name='search-query'
+                        className={'placeholder:text-slate-400/70 focus:outline-none outline-none border-none bg-white/95 rounded-4xl lg:h-11 sm:w-3/7 lg:w-2/7 lg:placeholder:text-base lg:text-base sm:placeholder:text-sm sm:text-sm sm:h-8 ::selection:text-black ::selection:text-black '}
+                    />
 
-            <div class='flex mt-10 ml-5 justify-center gap-4 items-center'>
-            <Input 
-            type='text'
-            placeholder='Search for job'
-            className={'placeholder:text-slate-400/70 focus:outline-none outline-none border-none bg-white/95 rounded-4xl lg:h-11 sm:w-3/7 lg:w-2/7 lg:placeholder:text-sm sm:placeholder:text-xs sm:h-8'}
-            />
+                    <Button type='submit' className={'h-full sm:w-24 lg:w-30 lg:h-10 cursor-pointer'} variant='default'>
+                        Search
+                    </Button>
+            </form>
 
-            <Button type='submit' className={'h-full sm:w-24 lg:w-30 lg:h-10'} variant='default'>
-                Search
-            </Button>
+            <div>
+                
             </div>
-            {/* TODO: add filters here */}
-            
+
 
             {loadingJobs && (
                 <ClipLoader radius={"40px"} mt-5 cssOverride={override} color={"#F471B6"} />
@@ -107,9 +109,9 @@ const JobListing = () => {
                 <div className='mt-8 grid md: grid-cols-2 lg:grid-cols-3 gap-4 p-6'>
                     {dataJobs?.length ? (
                         dataJobs.map((job) => {
-                            return <JobCard key = {job.id} job={job}
-                            
-                            savedInit = {job?.saved?.length > 0}/>
+                            return <JobCard key={job.id} job={job}
+
+                                savedInit={job?.saved?.length > 0} />
                         })
                     ) : (
                         <div> No Jobs Found ☹️ </div>
