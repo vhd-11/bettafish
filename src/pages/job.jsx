@@ -22,6 +22,7 @@ const JobPage = () => {
     })
 
     const {
+        // eslint-disable-next-line no-unused-vars
         loading: loadingHiringStatus,
         fn: fnHiringStatus,
     } = useFetch(updateHiringstatus, {
@@ -37,12 +38,6 @@ const JobPage = () => {
         display: "block",
         margin: "auto",
     };
-
-    const override2 = {
-        display: "block",
-        // margin: "auto",
-        margin: "0 4 0 0"
-    }
 
     useEffect(() => {
         if (isLoaded) fnJob();
