@@ -11,7 +11,7 @@ const AppLayout = () => {
                 <Outlet />
             </main>
             <div className='p-4 text-center mt-10 bg-transparent'>
-            <div> Icons made by <a href="https://www.flaticon.com/authors/afif-fudin" title="afif fudin"> afif fudin </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com'</a></div>
+            <div> Icon made by <a href="https://www.flaticon.com/authors/afif-fudin" title="afif fudin"> afif fudin </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
             </div>
         </div>
     );
