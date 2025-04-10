@@ -1,6 +1,7 @@
 import { getSingleJob } from '@/api/apiJobs'
 import useFetch from '@/hooks/use-fetch'
 import { useUser } from '@clerk/clerk-react'
+import MDEditor from '@uiw/react-md-editor'
 import { BriefcaseBusinessIcon, Clock10Icon, DoorClosedIcon, DoorOpenIcon, MapPinIcon, PersonStandingIcon } from 'lucide-react'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
@@ -104,7 +105,8 @@ const JobPage = () => {
                 <p className='mt-2 lg:mt-5 text-gray-500 font-normal'>{job?.description}</p>
 
                 <p className='lg:text-3xl text-xl font-medium lg:mt-12 mt-8'>Requirements</p>
-                <p className='mt-2 lg:mt-5 text-gray-500 font-normal'>{job?.requirements}</p>
+                <MDEditor.Markdown
+                source = {job?.requirements} className='mt-2 lg:mt-5 text-gray-500 font-normal bg-transparent'/>
             </div>
             
         </div>
