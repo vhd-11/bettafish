@@ -38,6 +38,12 @@ const JobPage = () => {
         margin: "auto",
     };
 
+    const override2 = {
+        display: "block",
+        // margin: "auto",
+        margin: "0 4 0 0"
+    }
+
     useEffect(() => {
         if (isLoaded) fnJob();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -89,6 +95,7 @@ const JobPage = () => {
                                 </div>
 
                                 {/* close/open application */}
+
                                 {job?.recruiter_id === user?.id ? ( <Select className='lg:h-20 border-none focus:ring-0 focus-visible:ring-ring/0' onValueChange={handleStatusChange}>
                                     <SelectTrigger className={ `rounded-4xl text-sm text-gray-500 font-medium  ${job?.isOpen ? "text-green-700" : "text-red-700"}`}>
                                         <SelectValue placeholder = {job?.isOpen ? (
@@ -127,9 +134,6 @@ const JobPage = () => {
                 </div>
             </div> 
             <hr className='ml-10 mr-10'></hr>
-
-            {/* TODO:hiring status */}
-
 
             {/* job deets */}
             <div className='lg:m-10 ml-10 mt-5' >
