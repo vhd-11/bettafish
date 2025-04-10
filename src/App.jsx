@@ -10,6 +10,7 @@ import MyJob from './pages/my-job';
 import PostJob from './pages/post-job';
 import SavedJob from './pages/saved-job';
 import ProtectedRoute from './components/protected-route';
+import JobDeetsLayout from './layouts/job-deets-layout';
 // import { ThemeProvider } from "@/components/theme-provider"
 
 const router = createBrowserRouter([
@@ -38,22 +39,6 @@ const router = createBrowserRouter([
 
       },
       {
-        path: "/my-job",
-        element: (
-          <ProtectedRoute>
-            <MyJob />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "/job/:id",
-        element: (
-          <ProtectedRoute>
-            <JobPage />
-          </ProtectedRoute>
-        ),
-      },
-      {
         path: "/post-job",
         element: (
           <ProtectedRoute>
@@ -68,10 +53,31 @@ const router = createBrowserRouter([
             <SavedJob />
           </ProtectedRoute>
         ),
-      }
+      },
+      {
+        path: "/my-job",
+        element: (
+          <ProtectedRoute>
+            <MyJob />
+          </ProtectedRoute>
+        ),
+      },
 
     ],
   },
+  {
+    element: <JobDeetsLayout />,
+    children: [
+      {
+        path: "/job/:id",
+        element: (
+          <ProtectedRoute>
+            <JobPage />
+          </ProtectedRoute>
+        ),
+      },
+    ]
+  }
 ]);
 
 function App() {

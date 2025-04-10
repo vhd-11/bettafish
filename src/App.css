@@ -11,6 +11,10 @@
   z-index: -1;
 }
 
+.job-deets-background {
+  background-color: white;
+}
+
 .grid-background::before {
   content: "";
   position: absolute;
