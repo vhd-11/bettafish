@@ -104,9 +104,9 @@ const JobPage = () => {
                 <p className='lg:text-3xl text-xl font-medium'>Job Details</p>
                 <p className='mt-2 lg:mt-5 text-gray-500 font-normal'>{job?.description}</p>
 
-                <p className='lg:text-3xl text-xl font-medium lg:mt-12 mt-8'>Requirements</p>
+                <p className='lg:text-3xl text-xl font-medium lg:mt-12 mt-8 mb-2 lg:mb-5'>Requirements</p>
                 <MDEditor.Markdown
-                source = {job?.requirements} className='mt-2 lg:mt-5 text-gray-500 font-normal bg-transparent'/>
+                source = {job?.requirements} className='mt-2 lg:mt-5 text-gray-500 font-normal'/>
             </div>
             
         </div>

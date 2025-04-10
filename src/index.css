@@ -123,5 +123,5 @@
   list-style-type: disc;
   padding-left: 25px;
   color: #697282;
-  background-color: white;
+  background-color: var(--background);
 }
