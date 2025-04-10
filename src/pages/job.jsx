@@ -1,11 +1,12 @@
-import { getSingleJob } from '@/api/apiJobs'
+import { getSingleJob, updateHiringstatus } from '@/api/apiJobs'
 import useFetch from '@/hooks/use-fetch'
 import { useUser } from '@clerk/clerk-react'
 import MDEditor from '@uiw/react-md-editor'
-import { BriefcaseBusinessIcon, Clock10Icon, DoorClosedIcon, DoorOpenIcon, MapPinIcon, PersonStandingIcon } from 'lucide-react'
+import { BriefcaseBusinessIcon, Clock10Icon, DoorClosedIcon, DoorOpenIcon, MapPinIcon, PersonStandingIcon, MapPlusIcon } from 'lucide-react'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { ClipLoader } from 'react-spinners'
+import { Select, SelectGroup, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const JobPage = () => {
 
@@ -20,6 +21,18 @@ const JobPage = () => {
         job_id: id,
     })
 
+    const {
+        loading: loadingHiringStatus,
+        fn: fnHiringStatus,
+    } = useFetch(updateHiringstatus, {
+        job_id: id,
+    })
+
+    const handleStatusChange = (value) => {
+        const isOpen = value == "open"
+        fnHiringStatus(isOpen).then(() => fnJob())
+    }
+
     const override = {
         display: "block",
         margin: "auto",
@@ -27,6 +40,7 @@ const JobPage = () => {
 
     useEffect(() => {
         if (isLoaded) fnJob();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoaded])
 
     if (!isLoaded || loadingJob) {
@@ -47,8 +61,6 @@ const JobPage = () => {
                     <div className='flex flex-col'>
                         <div className='flex flex-col'>
                             <h1 className='lg:text-5xl text-3xl font-medium'>{job?.title}</h1>
-                            {/* num of applicants */}
-
 
                             <p className='lg:text-lg text-pink-400 font-bold tracking-wider'>{job?.company?.name}</p>
                         </div>
@@ -77,9 +89,9 @@ const JobPage = () => {
                                 </div>
 
                                 {/* close/open application */}
-                                <div className='flex flex-row gap-6'>
-                                    <div className='flex gap-0.2 items-center p-2 rounded-xl'>
-                                        {job?.isOpen ? (
+                                {job?.recruiter_id === user?.id ? ( <Select className='lg:h-20 border-none focus:ring-0 focus-visible:ring-ring/0' onValueChange={handleStatusChange}>
+                                    <SelectTrigger className={ `rounded-4xl text-sm text-gray-500 font-medium  ${job?.isOpen ? "text-green-700" : "text-red-700"}`}>
+                                        <SelectValue placeholder = {job?.isOpen ? (
                                             <>
                                                 <DoorOpenIcon color='#008236' height={'16'} /> <p className='text-green-700'>Open</p>
                                             </>
@@ -88,16 +100,36 @@ const JobPage = () => {
                                                 <DoorClosedIcon color='#C10007' />  <p className='text-red-700'>Closed</p>
                                             </>
                                         )}
+                                            
+                                            />
+                                    </SelectTrigger>
+                                    <SelectContent className={'rounded-4xl'}>
+                                        <SelectItem value={"open"}>Open</SelectItem>
+                                        <SelectItem value={"closed"}>Closed</SelectItem>                      
+                                    </SelectContent>
+                                </Select> ) : (
+                                <div className='flex flex-row gap-6'>
+                                    <div className='flex gap-0.2 items-center p-2 rounded-xl'>
+                                        {job?.isOpen ? (
+                                            <>
+                                                <DoorOpenIcon color='#008236' height={'16'} /> <p className='text-green-700'>Open</p>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <DoorClosedIcon color='#C10007' height={'16'} />  <p className='text-red-700'>Closed</p>
+                                            </>
+                                        )}
                                     </div>
-                                </div>
+                                </div> )}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
             <hr className='ml-10 mr-10'></hr>
 
             {/* TODO:hiring status */}
+
 
             {/* job deets */}
             <div className='lg:m-10 ml-10 mt-5' >
@@ -106,9 +138,11 @@ const JobPage = () => {
 
                 <p className='lg:text-3xl text-xl font-medium lg:mt-12 mt-8 mb-2 lg:mb-5'>Requirements</p>
                 <MDEditor.Markdown
-                source = {job?.requirements} className='mt-2 lg:mt-5 text-gray-500 font-normal'/>
+                    source={job?.requirements} className='mt-2 lg:mt-5 text-gray-500 font-normal' />
+
+                {/* TODO: render applications */}
             </div>
-            
+
         </div>
     )
 }
