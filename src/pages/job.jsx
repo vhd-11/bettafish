@@ -7,6 +7,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { ClipLoader } from 'react-spinners'
 import { Select, SelectGroup, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import ApplyJob from '@/components/apply-job'
 
 const JobPage = () => {
 
@@ -140,6 +141,9 @@ const JobPage = () => {
                     source={job?.requirements} className='mt-2 lg:mt-5 text-gray-500 font-normal' />
 
                 {/* TODO: render applications */}
+                {job?.recruiter_id !== user?.id && <ApplyJob 
+                job={job} user={user} fetchJob={fnJob} applied={job?.applications?.find((ap) => ap.candidate_id === user.id)} 
+                />}
             </div>
 
         </div>
