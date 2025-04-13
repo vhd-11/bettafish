@@ -14,25 +14,42 @@ import { Button } from './ui/button'
 
 const ApplyJob = ({ user, job, applied = false, fetchJob }) => {
     return (
-        <Drawer open={applied ? false : undefined}>
-            <DrawerTrigger >
-                <button className='bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 rounded-xl p-3 cursor-pointer my-5 w-md sm:w-xl text-center m-auto lg:my-10 inline-flex items-center justify-center'>
-                    {job?.isOpen ? (applied ? "Applied" : "Apply") : "Hiring closed!"}
-                </button>
-            </DrawerTrigger>
-            <DrawerContent>
-                <DrawerHeader>
-                    <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-                    <DrawerDescription>This action cannot be undone.</DrawerDescription>
-                </DrawerHeader>
-                <DrawerFooter>
-                    <Button>Submit</Button>
-                    <DrawerClose>
-                        <Button variant="outline">Cancel</Button>
-                    </DrawerClose>
-                </DrawerFooter>
-            </DrawerContent>
-        </Drawer>
+        <>
+            <div className="w-full flex justify-center border border-red-500">
+                <Button variant="default" size="lg" className="mt-5">
+                    Center Me
+                </Button>
+            </div>
+
+
+            <Drawer open={applied ? false : undefined}>
+                <DrawerTrigger >
+
+                    {/* TODO: center and size it */}
+                    <div className='flex justify-center'>
+                        <Button
+                            variant={"default"} className={"cursor-pointer mt-5 block mx-auto"}
+                            size="lg"
+                            disabled={!job?.isOpen || applied}
+                        >
+                            {job?.isOpen ? (applied ? "Applied" : "Apply") : "Hiring closed!"}
+                        </Button>
+                    </div>
+                </DrawerTrigger>
+                <DrawerContent>
+                    <DrawerHeader>
+                        <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+                        <DrawerDescription>This action cannot be undone.</DrawerDescription>
+                    </DrawerHeader>
+                    <DrawerFooter>
+                        <Button>Submit</Button>
+                        <DrawerClose>
+                            <Button variant="outline">Cancel</Button>
+                        </DrawerClose>
+                    </DrawerFooter>
+                </DrawerContent>
+            </Drawer>
+        </>
 
     )
 }
