@@ -13,7 +13,6 @@ import { Button } from './ui/button'
 import { Input } from './ui/input'
 import FormJob from './ui/form'
 
-
 const ApplyJob = ({ user, job, applied = false, fetchJob }) => {
     return (
         <>
@@ -37,7 +36,7 @@ const ApplyJob = ({ user, job, applied = false, fetchJob }) => {
                         <DrawerDescription>Please fill this form.</DrawerDescription>
                     </DrawerHeader>
 
-                    <FormJob className=""></FormJob>
+                    <FormJob></FormJob>
 
                     <DrawerFooter>
                         <Button>Submit</Button>
