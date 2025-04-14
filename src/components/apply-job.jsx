@@ -10,6 +10,8 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer"
 import { Button } from './ui/button'
+import { Input } from './ui/input'
+import FormJob from './ui/form'
 
 
 const ApplyJob = ({ user, job, applied = false, fetchJob }) => {
@@ -32,8 +34,11 @@ const ApplyJob = ({ user, job, applied = false, fetchJob }) => {
                 <DrawerContent>
                     <DrawerHeader>
                         <DrawerTitle>Apply for {job?.title} at {job?.company?.name}</DrawerTitle>
-                        <DrawerDescription>This action cannot be undone.</DrawerDescription>
+                        <DrawerDescription>Please fill this form.</DrawerDescription>
                     </DrawerHeader>
+
+                    <FormJob className=""></FormJob>
+
                     <DrawerFooter>
                         <Button>Submit</Button>
                         <DrawerClose>
