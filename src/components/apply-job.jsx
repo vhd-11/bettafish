@@ -15,27 +15,22 @@ import { Button } from './ui/button'
 const ApplyJob = ({ user, job, applied = false, fetchJob }) => {
     return (
         <>
-            <div className="w-full flex justify-center border border-red-500">
-                <Button variant="default" size="lg" className="mt-5">
-                    Center Me
-                </Button>
-            </div>
 
 
             <Drawer open={applied ? false : undefined}>
+            <div className="w-full flex justify-center">
                 <DrawerTrigger >
 
-                    {/* TODO: center and size it */}
-                    <div className='flex justify-center'>
+
                         <Button
-                            variant={"default"} className={"cursor-pointer mt-5 block mx-auto"}
+                            variant={"default"} className={"h-11 lg:h-13 cursor-pointer mt-8 w-sm sm:w-xl md:w-2xl lg:w-4xl xl:w-6xl"}
                             size="lg"
                             disabled={!job?.isOpen || applied}
                         >
                             {job?.isOpen ? (applied ? "Applied" : "Apply") : "Hiring closed!"}
                         </Button>
-                    </div>
                 </DrawerTrigger>
+                </div>
                 <DrawerContent>
                     <DrawerHeader>
                         <DrawerTitle>Are you absolutely sure?</DrawerTitle>
