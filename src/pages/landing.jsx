@@ -45,19 +45,19 @@ const LandingPage = () => {
 
 
 
-            <section className='text-center relative pl-14'>
-                <img src="https://blush.design/api/download?shareUri=DSR_6FuEQW0CLOmI&c=Skin_0%7E1fad66&w=800&h=800&fm=png" alt="star" className='w-16 sm:w-22 lg:w-54 absolute -top-10 left-5 sm:left-16 lg:left-27 rotate-335 lg:-top-15'></img>
+            <section className='pl-13'>
+                {/* <img src="https://blush.design/api/download?shareUri=DSR_6FuEQW0CLOmI&c=Skin_0%7E1fad66&w=800&h=800&fm=png" alt="star" className='w-16 sm:w-22 lg:w-54 absolute -top-10 left-5 sm:left-16 lg:left-27 rotate-335 lg:-top-15'></img>
                 
                 <img
                     src="https://blush.design/api/download?shareUri=0QcVzOFDtot3OIWC&c=New%2520Palette%25201_0%7Effffff&w=800&h=800&fm=png"
                     alt="woman walking"
                     className='w-20 sm:w-28 lg:w-66 absolute -top-10 left-5 sm:left-16 lg:left-22 rotate-335 lg:-top-20'
-                />
+                /> */}
                 <p className='whitespace-prewrap text-4xl md:text-5xl font-medium text-black mb-3 lg:text-6xl xl:text-7xl'>
                     Reinovating the
                     Job <span className='text-white bg-teal-600 my-3 py-0 leading-5'>Hunt</span>
                 </p>
-                <p className='mt-2 text-base sm:text-xl font-medium text-gray-400 pl-13'>
+                <p className='mt-2 text-base sm:text-xl font-medium text-gray-400'>
                     Fish for both jobs and candidates
                     with <span className='text-teal-600 font-semibold'>Bettafish</span>
                 </p>
@@ -66,7 +66,7 @@ const LandingPage = () => {
 
 
             {/* buttons */}
-            <div className='flex justify-center items-start gap-5'>
+            <div className='flex justify-start items-start gap-5 pl-13'>
                 <Link to="/job-listing">
                     <div>
                         <a onClick={() => {
@@ -98,12 +98,12 @@ const LandingPage = () => {
 
             {/* 2nd images */}
 
-            <div className="relative flex justify-end mt-4 mb-[-40px] z-10">
+            {/* <div className="relative flex justify-end mt-4 mb-[-40px] z-10">
                 <img
                     src="https://blush.design/api/download?shareUri=bosCr9Fux&w=800&h=800&fm=png"
                     className='w-24 sm:w-33 lg:w-73 absolute -top-23 rotate-12 lg:-top-59 lg:right-17'
                 />
-            </div>
+            </div> */}
 
 
             {/* carousel */}
