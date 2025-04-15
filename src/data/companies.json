@@ -11,7 +11,7 @@
     },
     {
         "name": "google",
-        "path": "/companies/google.webp",
+        "path": "/companies/google.svg",
         "id": 3
     },
     {
@@ -20,13 +20,13 @@
         "id": 4
     },
     {
-        "name": "microsoft",
-        "path": "/companies/microsoft.webp",
+        "name": "bereal",
+        "path": "/companies/bereal.svg",
         "id": 5
     },
     {
         "name": "netflix",
-        "path": "/companies/netflix.png",
+        "path": "/companies/netflix.svg",
         "id": 6
     },
     {

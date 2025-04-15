@@ -40,10 +40,8 @@ const LandingPage = () => {
 
 
     return (
+        <>
         <main className='flex flex-col gap-8 lg:gap-14 xl:gap-17 py-15 sm:py-20'>
-
-
-
 
             <section className='pl-13'>
                 {/* <img src="https://blush.design/api/download?shareUri=DSR_6FuEQW0CLOmI&c=Skin_0%7E1fad66&w=800&h=800&fm=png" alt="star" className='w-16 sm:w-22 lg:w-54 absolute -top-10 left-5 sm:left-16 lg:left-27 rotate-335 lg:-top-15'></img>
@@ -105,7 +103,27 @@ const LandingPage = () => {
                 />
             </div> */}
 
+            {/* accordion */}
+            {/* <div className='px-6 sm:px-12'>Frequently Asked Questions</div> */}
+            <Accordion className='py-7 px-6 mx-10 sm:mx-13 sm:px-13 bg-white shadow-2xl' type="single" collapsible>
+                {faq.map((faqIt, index) => {
+                    return (
+                        <AccordionItem className='text-black' key={index} value={`item-${index + 1}`}>
+                            <AccordionTrigger className='sm:text-base'>{faqIt.question}</AccordionTrigger>
+                            <AccordionContent>
+                                {faqIt.answer}
+                            </AccordionContent>
+                        </AccordionItem>
+                    );
+                })
+                }
 
+            </Accordion>
+
+        
+        </main >
+        <footer className='flex-row bg-teal-600/70 static bottom-0 bg-repeat'>
+                <p className='pt-9 pb-5 text-base sm:text-xl font-medium text-white text-center'>Trusted by 100+ companies</p>
             {/* carousel */}
             <Carousel plugins={[
                 Autoplay({
@@ -124,25 +142,9 @@ const LandingPage = () => {
                     })}
                 </CarouselContent>
             </Carousel>
+            </footer>
+        </>
 
-            {/* accordion */}
-            {/* <div className='px-6 sm:px-12'>Frequently Asked Questions</div> */}
-            <Accordion className='py-7 px-6 mx-10 sm:mx-13 sm:px-13 bg-white shadow-2xl' type="single" collapsible>
-                {faq.map((faqIt, index) => {
-                    return (
-                        <AccordionItem className='text-black' key={index} value={`item-${index + 1}`}>
-                            <AccordionTrigger className='sm:text-base'>{faqIt.question}</AccordionTrigger>
-                            <AccordionContent>
-                                {faqIt.answer}
-                            </AccordionContent>
-                        </AccordionItem>
-                    );
-                })
-                }
-
-            </Accordion>
-
-        </main >
     )
 }
 
