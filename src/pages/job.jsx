@@ -64,7 +64,7 @@ const JobPage = () => {
                         <div className='flex flex-col'>
                             <h1 className='lg:text-5xl text-3xl font-medium'>{job?.title}</h1>
 
-                            <p className='lg:text-lg text-pink-400 font-bold tracking-wider'>{job?.company?.name}</p>
+                            <p className='lg:text-lg text-orange-500/70 font-bold tracking-wider'>{job?.company?.name}</p>
                         </div>
 
                         {/* 3 tabs for fulltime remote n location */}

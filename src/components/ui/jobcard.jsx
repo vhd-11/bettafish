@@ -47,12 +47,12 @@ const JobCard = ({
   // TODO: implement pagination which creates the option to traverse btwn pages when more than one page is there (refer: shadcn-ui)
   return (
     <Card className={"p-1"}>
-      <div className='bg-pink-200/30 rounded-xl m-1 pt-4 pb-4 flex grow flex-col min-w-0 gap-2'>
+      <div className='bg-teal-400/20 rounded-xl m-1 pt-4 pb-4 flex grow flex-col min-w-0 gap-2'>
         <CardHeader>
             <div className='font-light sm:text-sm lg:text-base italic'>{job.company.name}</div>
 
           <CardTitle className={"flex justify-between items-baseline font-medium sm:text-lg lg:text-3xl"}>{job.title}
-            {isMyJob && (<TrashIcon fill="pink" size={18} className='text-pink-300 cursor-pointer' />
+            {isMyJob && (<TrashIcon fill="#009689" size={18} className='text-green-300 cursor-pointer' />
             )}
             {job.company && <img src={job.company.logo_url} className='h-6' />}
           </CardTitle >

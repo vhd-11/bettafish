@@ -85,18 +85,18 @@ const JobListing = () => {
     };
 
     if (!isLoaded) {
-        return <ClipLoader width={"5rem"} radius={"5rem"} cssOverride={override} color={"#F471B6"} />
+        return <ClipLoader width={"5rem"} radius={"5rem"} cssOverride={override} color={"orange"} />
     }
 
     return (
         <div>
-            <div className='text-7xl font-dark text-white mb-3 sm:text-5xl lg:text-7xl text-center'>
-                <span className='underline underline-offset-6 decoration-pink-400/80 '>Latest</span> Jobs
+            <div className='text-7xl font-dark text-black mb-3 sm:text-5xl lg:text-7xl text-center mt-6'>
+                <span className='underline underline-offset-6 decoration-orange-400/80 '>Latest</span> Jobs
             </div>
 
             <form onSubmit={handleSearch} className='flex mt-10 ml-5 justify-center gap-4 items-center'>
                 <div className='relative'>
-                    <Button type='submit' className={'absolute left-0.1 top-0 bottom-0 px-3 lg:h-10 sm:h-8 sm:w-10 lg:w-13 cursor-pointer rounded-4xl bg-pink-400/90'} variant='default'>
+                    <Button type='submit' className={'absolute left-0.1 top-0 bottom-0 px-3 lg:h-10 sm:h-8 sm:w-10 lg:w-13 cursor-pointer rounded-4xl bg-orange-400'} variant='default'>
                         <SearchIcon></SearchIcon>
                     </Button>
                     <Input
@@ -113,7 +113,7 @@ const JobListing = () => {
                 {/* TODO: change font size to match viewport */}
                 <Select className='lg:h-20 border-none focus:ring-0 focus-visible:ring-ring/0' value={location} onValueChange={(value) => setLocation(value)}>
                     <SelectTrigger className='bg-white rounded-4xl lg:text-[15px] sm:text-sm'>
-                        <MapPlusIcon color="#F471B6" />
+                        <MapPlusIcon color="orange" />
                         <SelectValue placeholder="Location" />
                     </SelectTrigger>
                     <SelectContent className={'rounded-4xl'}>
@@ -128,7 +128,7 @@ const JobListing = () => {
 
                 <Select className='lg:h-20 border-none focus:ring-0 focus-visible:ring-ring/0' value={company_id} onValueChange={(value) => setCompany_id(value)}>
                     <SelectTrigger className='bg-white rounded-4xl lg:text-[15px] sm:text-sm'>
-                        <BuildingIcon color="#F471B6" />
+                        <BuildingIcon color="orange" />
                         <SelectValue placeholder="Company" />
                     </SelectTrigger>
                     <SelectContent className={'rounded-4xl'}>
@@ -143,7 +143,7 @@ const JobListing = () => {
 
                 
                 <Button onClick={clearFilters} variant='default' className={'bg-white font-normal text-slate-500/90 sm:w-1/5 lg:w-1/9 hover:bg-white cursor-pointer'}>
-                <Trash2Icon color='#f471b6'></Trash2Icon>
+                <Trash2Icon color='orange'></Trash2Icon>
                     Clear Filter
                 </Button>
 
@@ -154,7 +154,7 @@ const JobListing = () => {
 
             {loadingJobs && (
                 // TODO: cliploader's margin to be a bit more at the top, mt not working
-                <ClipLoader radius={"23px"} mt-300 cssOverride={override} color={"#F471B6"} />
+                <ClipLoader radius={"23px"} mt-300 cssOverride={override} color={"orange"} />
             )}
 
             {loadingJobs === false && (

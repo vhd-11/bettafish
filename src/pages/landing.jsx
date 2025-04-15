@@ -42,17 +42,10 @@ const LandingPage = () => {
     return (
         <>
             <main className='flex flex-col gap-8 lg:gap-14 xl:gap-17 py-15 sm:py-20'>
-                <div className='flex justify-around'>
+                <div className='flex justify-center xl:gap-20'>
                     <div className='flex-row'>
 
                         <section className='pl-13'>
-                            {/* <img src="https://blush.design/api/download?shareUri=DSR_6FuEQW0CLOmI&c=Skin_0%7E1fad66&w=800&h=800&fm=png" alt="star" className='w-16 sm:w-22 lg:w-54 absolute -top-10 left-5 sm:left-16 lg:left-27 rotate-335 lg:-top-15'></img>
-                
-                <img
-                    src="https://blush.design/api/download?shareUri=0QcVzOFDtot3OIWC&c=New%2520Palette%25201_0%7Effffff&w=800&h=800&fm=png"
-                    alt="woman walking"
-                    className='w-20 sm:w-28 lg:w-66 absolute -top-10 left-5 sm:left-16 lg:left-22 rotate-335 lg:-top-20'
-                /> */}
                             <p className='  font-medium text-black mb-3 lg:text-6xl xl:text-7xl text-4xl md:text-5xl'>
                                 <span className='lg:text-7xl xl:text-8xl text-5xl md:text-6xl tracking-tight lg:tracking-tighter'>Reinovating  </span>
                                 <div className='mt-1 lg:mt-4'>
@@ -68,7 +61,7 @@ const LandingPage = () => {
 
 
                         {/* buttons */}
-                        <div className='flex justify-start items-start gap-5 pl-13 mt-6 md:mt-8 lg:mt-10 xl:mt-13'>
+                        <div className='flex justify-center items-start gap-5 pl-13 mt-6 md:mt-8 lg:mt-10 xl:mt-13'>
                             <Link to="/job-listing">
                                 <div>
                                     <a onClick={() => {
@@ -99,30 +92,19 @@ const LandingPage = () => {
                         </div>
                     </div>
 
+{/* running woman img */}
                     <div className=''>
                         <img
                             src="public/RunningDoodle.svg"
-                            className='rotate-345 w-140 h-auto'
+                            className=' w-78 h-auto rotate-326'
                         />
                     </div>
                 </div>
 
-                {/* <div className='px-13 flex flex-col md:flex-row justify-start md:gap-4 lg:gap-10 items-baseline'>
-                    <img src="public/undraw_faq_h01d.svg" alt="faq" className='w-1/3 md:w-1/4 lg:w-1/7 h-auto'></img>
-                    <p className='pt-9 pb-5 text-xl sm:text-xl font-medium text-black text-center'>Frequently Asked Questions</p>
-                </div> */}
-
-                {/* 2nd images */}
-
-                {/* <div className="relative flex justify-end mt-4 mb-[-40px] z-10">
-                <img
-                    src="https://blush.design/api/download?shareUri=bosCr9Fux&w=800&h=800&fm=png"
-                    className='w-24 sm:w-33 lg:w-73 absolute -top-23 rotate-12 lg:-top-59 lg:right-17'
-                />
-            </div> */}
-
                 {/* accordion */}
                 {/* <div className='px-6 sm:px-12'>Frequently Asked Questions</div> */}
+
+                <div className='px-13 font-medium -mb-4 lg:text-6xl xl:text-7xl text-4xl md:text-5xl text-teal-600 lg:-mb-12'>FAQs</div>
                 <Accordion className='py-7 px-6 mx-10 sm:mx-13 sm:px-13 bg-white shadow-2xl' type="single" collapsible>
                     {faq.map((faqIt, index) => {
                         return (
