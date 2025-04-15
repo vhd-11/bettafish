@@ -12,12 +12,22 @@ import {
 import { Button } from './ui/button'
 import { Input } from './ui/input'
 import FormJob from './ui/form'
+import {z} from "zod";
+
+// const schema = z.Object({
+//     experience:z
+//     .number()
+//     .min(0, {message: "Experience cannot be less than 0 years."})
+//     .int(),
+
+//     skills:z
+//     .string()
+//     .min(1, {message: "Skills are required"})
+// })
 
 const ApplyJob = ({ user, job, applied = false, fetchJob }) => {
     return (
         <>
-
-
             <Drawer open={applied ? false : undefined} >
                 <div className="w-full flex justify-center">
                     <DrawerTrigger >
@@ -44,7 +54,7 @@ const ApplyJob = ({ user, job, applied = false, fetchJob }) => {
                             <div className='flex justify-center gap-3 lg:gap-7'>
                                 <Button variant={"outline"} className="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800 w-1/4 hover:text-gray-200">Submit</Button>
 
-                                <Button variant="outline" className={"text-white bg-teal-100 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm w-1/4 px-5 py-2.5 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800 hover:text-gray-200"}  >Cancel</Button>
+                                <Button variant="outline" className={"text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm w-1/4 px-5 py-2.5 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800 hover:text-gray-200"}  >Cancel</Button>
                         </div>
                             </DrawerClose>
                     </DrawerFooter>
