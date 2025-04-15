@@ -30,7 +30,7 @@ const Header = () => {
 
     return (
         <>
-            <nav className='py-3 px-2  items-center flex justify-between text-'>
+            <nav className='py-3 px-2  items-center flex justify-between bg-white'>
                 <div className='flex justify-items-start gap-1 text-pink-400'>
                     <Link>
                         <img src="/koi-fish.png" className='h-10' alt="logo" />

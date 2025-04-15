@@ -40,28 +40,29 @@ const LandingPage = () => {
 
 
     return (
-        <main className='flex flex-col gap-10 sm:gap-20 py-15 sm:py-20 text-white/85'>
+        <main className='flex flex-col gap-8 lg:gap-14 xl:gap-17 py-15 sm:py-20'>
             <section className='text-center'>
-                <p className=' flex flex-col items-center text-7xl font-dark text-white mb-3 sm:text-5xl lg:text-9xl'>
-                    Reinovating the
-                    <span className='italic'>Job Hunt</span>
+                <p className='whitespace-prewrap text-4xl md:text-5xl font-medium text-black mb-3 lg:text-6xl xl:text-7xl'>
+                Reinovating the 
+                
+                Job <span className='text-white bg-teal-600 my-3 py-0 leading-5'>Hunt</span> 
                 </p>
-                <p className='sm:mt-4 text-white sm:text-xl font-light'>
+                <p className='mt-2 text-base sm:text-xl font-medium text-gray-400'>
                     Fish for both jobs and candidates
-                    with <span className='text-pink-400 font-semibold'>Bettafish</span></p>
+                    with <span className='text-teal-600 font-semibold'>Bettafish</span></p>
             </section>
 
             {/* buttons */}
-            <div className='flex justify-center items-start gap-8'>
+            <div className='flex justify-center items-start gap-5'>
                 <Link to="/job-listing">
                     <div>
                         <a onClick={() => {
                             handleRoleSelection("candidate")
-                        }} class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-pink-300 rounded-full shadow-md group bg-pink-400">
-                            <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-220 -translate-x-full bg-pink-400 group-hover:translate-x-0 ease">
+                        }} class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-teal-600 rounded-full shadow-md group bg-teal-600">
+                            <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-220 -translate-x-full bg-teal-600 group-hover:translate-x-0 ease">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </span>
-                            <span class="absolute flex items-center justify-center w-full h-full text-pink-00 transition-all duration-400 transform group-hover:translate-x-full ease bg-pink-400">Candidate</span>
+                            <span class="absolute flex items-center justify-center w-full h-full text-teal-00 transition-all duration-400 transform group-hover:translate-x-full ease bg-teal-600">Candidate</span>
                             <span class="relative invisible">Candidate</span>
                         </a>
                     </div>
@@ -71,12 +72,12 @@ const LandingPage = () => {
                     <div>
                         <a onClick={() => {
                             handleRoleSelection("recruiter")
-                        }} class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-pink-300 rounded-full shadow-md group bg-pink-400">
-                            <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-220 -translate-x-full bg-pink-400 group-hover:translate-x-0 ease">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                            </span>
-                            <span class="absolute flex items-center justify-center w-full h-full text-pink-00 transition-all duration-300 transform group-hover:translate-x-full ease bg-pink-400">Employer</span>
-                            <span class="relative invisible">Employer</span>
+                        }} class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-teal-600 rounded-full shadow-md group bg-teal-600">
+                        <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-220 -translate-x-full bg-teal-600 group-hover:translate-x-0 ease">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </span>
+                        <span class="absolute flex items-center justify-center w-full h-full text-teal-00 transition-all duration-400 transform group-hover:translate-x-full ease bg-teal-600">Recruiter</span>
+                        <span class="relative invisible">Recruiter</span>
                         </a>
                     </div>
                 </Link>
@@ -85,7 +86,7 @@ const LandingPage = () => {
             {/* carousel */}
             <Carousel plugins={[
                 Autoplay({
-                    delay: 1500,
+                    delay: 930,
                 }),
             ]}
                 className="w-full py-8 px-6">
@@ -103,10 +104,10 @@ const LandingPage = () => {
 
             {/* accordion */}
             {/* <div className='px-6 sm:px-12'>Frequently Asked Questions</div> */}
-            <Accordion className='py-7 px-6 mx-10 sm:mx-13 sm:px-13 bg-rose-300/35 shadow-2xl' type="single" collapsible>
+            <Accordion className='py-7 px-6 mx-10 sm:mx-13 sm:px-13 bg-white shadow-2xl' type="single" collapsible>
                 {faq.map((faqIt, index) => {
                     return (
-                    <AccordionItem className='text-white' key={index} value={`item-${index + 1}`}>
+                    <AccordionItem className='text-black' key={index} value={`item-${index + 1}`}>
                         <AccordionTrigger className='sm:text-base'>{faqIt.question}</AccordionTrigger>
                         <AccordionContent>
                             {faqIt.answer}
