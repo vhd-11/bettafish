@@ -10,22 +10,45 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer"
 import { Button } from './ui/button'
-import { Input } from './ui/input'
-import FormJob from './ui/form'
-import {z} from "zod";
+import { z } from "zod";
+import { useForm } from 'react-hook-form'
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Controller } from 'react-hook-form';
 
-// const schema = z.Object({
-//     experience:z
-//     .number()
-//     .min(0, {message: "Experience cannot be less than 0 years."})
-//     .int(),
+const schema = z.object({
+    experience: z
+        .number()
+        .min(0, { message: "Experience cannot be less than 0 years." })
+        .int(),
 
-//     skills:z
-//     .string()
-//     .min(1, {message: "Skills are required"})
-// })
+    skills: z
+        .string()
+        .min(1, { message: "Skills are required" }),
+
+    education: z
+        .enum(["Intermediate", "Graduate", "Post Graduate"], {
+            message: "Education is required",
+        }),
+
+    resume: z
+        .any()
+        .refine(
+            (file) =>
+                file[0] &&
+                (file[0].type === "application/pdf" ||
+                    file[0].type === "application/msword"),
+            { message: "Only PDF or Word documents are allowed." }
+        ),
+})
 
 const ApplyJob = ({ user, job, applied = false, fetchJob }) => {
+
+    const { register, handleSubmit, control, formState: { errors }, reset } = useForm({
+        resolver: zodResolver(schema),
+    })
+
     return (
         <>
             <Drawer open={applied ? false : undefined} >
@@ -46,22 +69,95 @@ const ApplyJob = ({ user, job, applied = false, fetchJob }) => {
                         <DrawerDescription className={"block m-auto"}>Please fill this form.</DrawerDescription>
                     </DrawerHeader>
 
-                    <FormJob></FormJob>
+                    {/* form */}
+                    <div>
+                        <form class="max-w-md mx-auto">
 
+                            <div class="relative z-0 w-full mb-7 group">
+                                <input type="text" name="floating_name" id="floating_name" class="block py-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-teal-600 focus:outline-none focus:ring-0 focus:border-teal-600 peer" placeholder=" " required />
+                                <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-teal-600 peer-focus:dark:text-teal-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">Name</label>
+                            </div>
+
+                            <div class="relative z-0 w-full mb-7 group">
+                                <input type="email" name="floating_email" id="floating_email" class="block py-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-teal-600 focus:outline-none focus:ring-0 focus:border-teal-600 peer" placeholder=" " required />
+                                <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-teal-600 peer-focus:dark:text-teal-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">Email</label>
+                            </div>
+
+                            <div class="relative z-0 w-full mb-7 group">
+                                <input type="number" name="floating_years" id="floating_years" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-teal-600 focus:outline-none focus:ring-0 focus:border-teal-600 peer" placeholder=" " required
+                                    {...register("experience", {
+                                        valueAsNumber: true,
+                                    })} />
+                                <label for="floating_years" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-teal-600 peer-focus:dark:text-teal-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">Years of Experience</label>
+                                {errors.experience && (
+                                    <p className='text-red-500'>{errors.experience.message}</p>
+                                )}
+                            </div>
+
+                            <div class="relative z-0 w-full mb-7 group">
+                                <input type="text" name="floating_years" id="floating_years" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-teal-600 focus:outline-none focus:ring-0 focus:border-teal-600 peer" placeholder=" " required
+                                    {...register("skills")} />
+                                <label for="floating_years" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-teal-600 peer-focus:dark:text-teal-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">Skills (Comma Separated) </label>
+                                {errors.skills && (
+                                    <p className='text-red-500'>{errors.skills.message}</p>
+                                )}
+                            </div>
+
+
+                            <div class="relative z-0 w-full mb-14 group">
+                                <label for="floating_education" class="text-sm text-gray-500 dark:text-gray-400 focus:text-teal-600">Education</label>
+
+                                <Controller
+                                    name="education"
+                                    control={control}
+                                    render={({ field }) => (
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            className={'flex justify-between'}
+                                            {...field}
+                                        >
+
+                                            <div className="flex items-center space-x-2">
+                                                <RadioGroupItem value="Undergraduate" id="r2" />
+                                                <Label htmlFor="r2">Undergraduate</Label>
+                                            </div>
+                                            <div className="flex items-center space-x-2">
+                                                <RadioGroupItem value="Graduate" id="r3" />
+                                                <Label htmlFor="r3">Graduate</Label>
+                                            </div>
+                                            <div className="flex items-center space-x-2">
+                                                <RadioGroupItem value="Post-Graduate" id="r1" />
+                                                <Label htmlFor="r1">Post-Graduate</Label>
+                                            </div>
+                                        </RadioGroup>
+                                    )}
+                                />
+
+                                {errors.education && (
+                                    <p className='text-red-500'>{errors.education.message}</p>
+                                )}
+                            </div>
+
+                            <div class="relative z-0 w-full mb-7 group">
+                                <input type="file" name="floating_resume" id="floating_resume" class="block py-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-teal-600 focus:outline-none focus:ring-0 focus:border-teal-600 peer file:text-teal-600 cursor-pointer file:cursor-pointer" placeholder=" " required />
+                                <label for="floating_resume" class="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-7 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-teal-600 peer-focus:dark:text-teal-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-7">Resume</label>
+                            </div>
+                        </form>
+
+                    </div>
 
                     <DrawerFooter>
-                            <DrawerClose>
+                        <DrawerClose>
                             <div className='flex justify-center gap-3 lg:gap-7'>
-                                <Button variant={"outline"} className="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800 w-1/4 hover:text-gray-200">Submit</Button>
-
-                                <Button variant="outline" className={"text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm w-1/4 px-5 py-2.5 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800 hover:text-gray-200"}  >Cancel</Button>
-                        </div>
-                            </DrawerClose>
+                                <Button variant="outline" className="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800 w-1/4 hover:text-gray-200">Submit</Button>
+                                <Button variant="outline" className="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm w-1/4 px-5 py-2.5 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800 hover:text-gray-200">Cancel</Button>
+                            </div>
+                        </DrawerClose>
                     </DrawerFooter>
+
                 </DrawerContent>
             </Drawer>
         </>
-
     )
 }
 
