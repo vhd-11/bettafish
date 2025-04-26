@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom'
 import { ClipLoader } from 'react-spinners'
 import { Select, SelectGroup, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import ApplyJob from '@/components/apply-job'
+import ApplicationCard from '@/components/application-card'
 
 const JobPage = () => {
 
@@ -92,9 +93,9 @@ const JobPage = () => {
 
                                 {/* close/open application */}
 
-                                {job?.recruiter_id === user?.id ? ( <Select className='lg:h-20 border-none focus:ring-0 focus-visible:ring-ring/0' onValueChange={handleStatusChange}>
-                                    <SelectTrigger className={ `rounded-4xl text-sm text-gray-500 font-medium  ${job?.isOpen ? "text-green-700" : "text-red-700"}`}>
-                                        <SelectValue placeholder = {job?.isOpen ? (
+                                {job?.recruiter_id === user?.id ? (<Select className='lg:h-20 border-none focus:ring-0 focus-visible:ring-ring/0' onValueChange={handleStatusChange}>
+                                    <SelectTrigger className={`rounded-4xl text-sm text-gray-500 font-medium  ${job?.isOpen ? "text-green-700" : "text-red-700"}`}>
+                                        <SelectValue placeholder={job?.isOpen ? (
                                             <>
                                                 <DoorOpenIcon color='#008236' height={'16'} /> <p className='text-green-700'>Open</p>
                                             </>
@@ -103,32 +104,32 @@ const JobPage = () => {
                                                 <DoorClosedIcon color='#C10007' />  <p className='text-red-700'>Closed</p>
                                             </>
                                         )}
-                                            
-                                            />
+
+                                        />
                                     </SelectTrigger>
                                     <SelectContent className={'rounded-4xl'}>
                                         <SelectItem value={"open"}>Open</SelectItem>
-                                        <SelectItem value={"closed"}>Closed</SelectItem>                      
+                                        <SelectItem value={"closed"}>Closed</SelectItem>
                                     </SelectContent>
-                                </Select> ) : (
-                                <div className='flex flex-row gap-6'>
-                                    <div className='flex gap-0.2 items-center p-2 rounded-xl'>
-                                        {job?.isOpen ? (
-                                            <>
-                                                <DoorOpenIcon color='#008236' height={'16'} /> <p className='text-green-700'>Open</p>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <DoorClosedIcon color='#C10007' height={'16'} />  <p className='text-red-700'>Closed</p>
-                                            </>
-                                        )}
-                                    </div>
-                                </div> )}
+                                </Select>) : (
+                                    <div className='flex flex-row gap-6'>
+                                        <div className='flex gap-0.2 items-center p-2 rounded-xl'>
+                                            {job?.isOpen ? (
+                                                <>
+                                                    <DoorOpenIcon color='#008236' height={'16'} /> <p className='text-green-700'>Open</p>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <DoorClosedIcon color='#C10007' height={'16'} />  <p className='text-red-700'>Closed</p>
+                                                </>
+                                            )}
+                                        </div>
+                                    </div>)}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <hr className='ml-10 mr-10'></hr>
 
             {/* job deets */}
@@ -141,9 +142,22 @@ const JobPage = () => {
                     source={job?.requirements} className='mt-2 lg:mt-5 text-gray-500 font-normal' />
 
                 {/* TODO: render applications */}
-                {job?.recruiter_id !== user?.id && <ApplyJob 
-                job={job} user={user} fetchJob={fnJob} applied={job?.applications?.find((ap) => ap.candidate_id === user.id)} 
+                {job?.recruiter_id !== user?.id && <ApplyJob
+                    job={job} user={user} fetchJob={fnJob} applied={job?.applications?.find((ap) => ap.candidate_id === user.id)}
                 />}
+
+                {job?.applications?.length > 0 && job?.recruiter_id === user?.id && (
+                    <div>
+                        <h2 className='text-2xl sm:text-3xl font-bold'>Applications</h2>
+
+                        {job?.applications.map((application) => {
+                            return <ApplicationCard 
+                            key = {application.id} application={application}
+                            />
+                        })}
+                    </div>
+                )
+                }
             </div>
 
         </div>
