@@ -154,7 +154,7 @@ const JobListing = () => {
 
             {loadingJobs && (
                 // TODO: cliploader's margin to be a bit more at the top, mt not working
-                <ClipLoader radius={"23px"} mt-300 cssOverride={override} color={"orange"} />
+                <ClipLoader radius={"23px"} cssOverride={override} color={"orange"} />
             )}
 
             {loadingJobs === false && (

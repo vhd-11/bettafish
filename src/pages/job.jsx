@@ -46,7 +46,7 @@ const JobPage = () => {
     }, [isLoaded])
 
     if (!isLoaded || loadingJob) {
-        return <ClipLoader radius={"23px"} mt-30 cssOverride={override} color={"#F471B6"} />
+        return <ClipLoader radius={"23px"} cssOverride={override} color={"#F471B6"} />
     }
 
     return (
