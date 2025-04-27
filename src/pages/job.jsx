@@ -2,7 +2,7 @@ import { getSingleJob, updateHiringstatus } from '@/api/apiJobs'
 import useFetch from '@/hooks/use-fetch'
 import { useUser } from '@clerk/clerk-react'
 import MDEditor from '@uiw/react-md-editor'
-import { BriefcaseBusinessIcon, Clock10Icon, DoorClosedIcon, DoorOpenIcon, MapPinIcon, PersonStandingIcon, MapPlusIcon } from 'lucide-react'
+import { BriefcaseBusinessIcon, Clock10Icon, DoorClosedIcon, DoorOpenIcon, MapPinIcon, PersonStandingIcon, MapPlusIcon, GlobeLockIcon } from 'lucide-react'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { ClipLoader } from 'react-spinners'
@@ -76,7 +76,7 @@ const JobPage = () => {
                                     <div>{job?.location}</div>
                                 </div>
                                 <div className='flex gap-0.2 items-center bg-slate-100/70 p-2 rounded-xl'>
-                                    <BriefcaseBusinessIcon height={'14'} ></BriefcaseBusinessIcon>
+                                    <GlobeLockIcon height={'14'} ></GlobeLockIcon>
                                     <div>{job?.mode}</div>
                                 </div>
                                 <div className='flex gap-0.2 items-center bg-slate-100/70 p-2 rounded-xl'>
@@ -148,7 +148,7 @@ const JobPage = () => {
 
                 {job?.applications?.length > 0 && job?.recruiter_id === user?.id && (
                     <div>
-                        <h2 className='text-2xl sm:text-3xl font-bold'>Applications</h2>
+                        <h2 className='lg:text-3xl text-xl font-medium mt-5'>Applications</h2>
 
                         {job?.applications.map((application) => {
                             return <ApplicationCard 
