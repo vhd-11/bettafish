@@ -6,6 +6,7 @@ import { Briefcase, FileArrowDown, UserGear } from '@phosphor-icons/react'
 import useFetch from '@/hooks/use-fetch'
 import { updateApplications } from '@/api/apiApplications'
 import { ClipLoader } from 'react-spinners'
+import { Select, SelectGroup, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const ApplicationCard = ({ application, isCandidate = false }) => {
     const handleDownload = () => {
@@ -61,8 +62,23 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
 
         <CardFooter className={"flex justify-between"}>
             <span>{new Date(application?.created_at).toLocaleString()}</span>
-            {!isCandidate ?
-                <span className='capitalized font-medium'>Status: {application?.status}</span> : <></>
+            {isCandidate ?
+                <span className='capitalized font-medium'>Status: {application?.status}</span> :
+                
+                (<Select className='lg:h-20 border-none focus:ring-0 focus-visible:ring-ring/0' onValueChange={handleStatusChange} defaultValue={application.status}>
+                    <SelectTrigger className={"rounded-4xl text-sm text-gray-500 font-medium"}>
+                        <SelectValue placeholder={"Application Status"}
+                        />
+                    </SelectTrigger>
+                    <SelectContent className={'rounded-4xl'}>
+                        <SelectItem value={"open"}>Open</SelectItem>
+                        <SelectItem value={"closed"}>Closed</SelectItem>
+                    <SelectItem value="Applied">Applied</SelectItem>
+                    <SelectItem value="Interviewing">Interviewing</SelectItem>
+                    <SelectItem value="Hired">Hired</SelectItem>
+                    <SelectItem value="Rejected">Rejected</SelectItem>
+                    </SelectContent>
+                </Select>)
             }
         </CardFooter>
     </Card>
