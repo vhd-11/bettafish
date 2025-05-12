@@ -1,5 +1,4 @@
 import React from 'react'
-import { useUser } from '@clerk/clerk-react'
 // import { useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
@@ -13,31 +12,8 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
 
 const LandingPage = () => {
-    const { user } = useUser();
-    const navigate = useNavigate();
-
-    const handleRoleSelection = async (role) => {
-        await user.update({
-            unsafeMetadata: { role },
-        }).then(() => {
-            navigate(role === "recruiter" ? "/post-job" : "/job-listing")
-        })
-            .catch((err) => {
-                console.error("Error updating role: ", err)
-            })
-    }
-
-    // useEffect(() => {
-    //     if (user?.unsafeMetadata?.role){
-    //         navigate(
-    //             user?.unsafeMetadata?.role === "recruiter" ? "/post-job"  : "/job-listing"
-    //         )
-    //     }
-    // },[user])
-
 
     return (
         <>
@@ -64,35 +40,31 @@ const LandingPage = () => {
                         <div className='flex justify-center items-start gap-5 pl-13 mt-6 md:mt-8 lg:mt-10 xl:mt-13'>
                             <Link to="/job-listing">
                                 <div>
-                                    <a onClick={() => {
-                                        handleRoleSelection("candidate")
-                                    }} class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-black rounded-full shadow-md group bg-black">
+                                    <a class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-black rounded-full shadow-md group bg-black">
                                         <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-220 -translate-x-full bg-black group-hover:translate-x-0 ease">
                                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                         </span>
-                                        <span class="absolute flex items-center justify-center w-full h-full text-teal-00 transition-all duration-400 transform group-hover:translate-x-full ease bg-black">Candidate</span>
-                                        <span class="relative invisible">Candidate</span>
+                                        <span class="absolute flex items-center justify-center w-full h-full text-teal-00 transition-all duration-400 transform group-hover:translate-x-full ease bg-black">Find Jobs</span>
+                                        <span class="relative invisible">Find Jobs</span>
                                     </a>
                                 </div>
                             </Link>
 
                             <Link to="/post-job">
                                 <div>
-                                    <a onClick={() => {
-                                        handleRoleSelection("recruiter")
-                                    }} class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-black rounded-full shadow-md group bg-black">
+                                    <a class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-black rounded-full shadow-md group bg-black">
                                         <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-220 -translate-x-full bg-black group-hover:translate-x-0 ease">
                                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                         </span>
-                                        <span class="absolute flex items-center justify-center w-full h-full text-teal-00 transition-all duration-400 transform group-hover:translate-x-full ease bg-black">Recruiter</span>
-                                        <span class="relative invisible">Recruiter</span>
+                                        <span class="absolute flex items-center justify-center w-full h-full text-teal-00 transition-all duration-400 transform group-hover:translate-x-full ease bg-black">Post Jobs</span>
+                                        <span class="relative invisible">Post Jobs</span>
                                     </a>
                                 </div>
                             </Link>
                         </div>
                     </div>
 
-{/* running woman img */}
+                    {/* running woman img */}
                     <div className=''>
                         <img
                             src="public/RunningDoodle.svg"

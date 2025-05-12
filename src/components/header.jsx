@@ -7,6 +7,7 @@ import { SignInButton } from '@clerk/clerk-react';
 import { UserButton } from '@clerk/clerk-react';
 import { BookmarkPlusIcon, BriefcaseBusiness, BriefcaseBusinessIcon, PenBox } from 'lucide-react';
 import { useState } from 'react';
+import { UploadCloudIcon } from 'lucide-react';
 
 const Header = () => {
     const [showSignIn, setShowSignIn] = useState(false);
@@ -47,9 +48,9 @@ const Header = () => {
                     <SignedIn>
                         {user?.unsafeMetadata?.role === "recruiter" && (
                     <Link to="/post-job">
-                        <Button variant='destructive' className='rounded-full'>
-                            <PenBox size={20} className='mr-2'></PenBox>
-                            Post Job
+                        <Button variant='destructive' className='rounded-full bg-teal-700 hover:bg-teal-800 hover:cursor-pointer'>
+                            <UploadCloudIcon size={23} className='mr-2'></UploadCloudIcon>
+                            Post a Job
                         </Button>
                         </Link>
                         )}

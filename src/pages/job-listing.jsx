@@ -91,12 +91,12 @@ const JobListing = () => {
     return (
         <div>
             <div className='text-7xl font-dark text-black mb-3 sm:text-5xl lg:text-7xl text-center mt-6'>
-                <span className='underline underline-offset-6 decoration-green-700 '>Latest</span> Jobs
+                <span className='underline underline-offset-6 decoration-teal-700 '>Latest</span> Jobs
             </div>
 
             <form onSubmit={handleSearch} className='flex mt-10 ml-5 justify-center gap-4 items-center flex-col sm:flex-row'>
                 <div className='relative'>
-                    <Button type='submit' className={'absolute left-0.1 top-0 bottom-0 px-3 w-9 lg:h-10 sm:h-8 sm:w-10 lg:w-13 cursor-pointer rounded-4xl bg-green-800'} variant='default'>
+                    <Button type='submit' className={'absolute left-0.1 top-0 bottom-0 px-3 w-9 lg:h-10 sm:h-8 sm:w-10 lg:w-13 cursor-pointer rounded-4xl bg-teal-700'} variant='default'>
                         <SearchIcon></SearchIcon>
                     </Button>
                     <Input
@@ -113,7 +113,7 @@ const JobListing = () => {
                 {/* TODO: change font size to match viewport */}
                 <Select className='lg:h-20 border-none focus:ring-0 focus-visible:ring-ring/0' value={location} onValueChange={(value) => setLocation(value)}>
                     <SelectTrigger className='bg-white rounded-4xl lg:text-[15px] sm:text-sm'>
-                        <MapPlusIcon color="green" />
+                        <MapPlusIcon color="#005F59" />
                         <SelectValue placeholder="Location" />
                     </SelectTrigger>
                     <SelectContent className={'rounded-4xl'}>
@@ -128,7 +128,7 @@ const JobListing = () => {
 
                 <Select className='lg:h-20 border-none focus:ring-0 focus-visible:ring-ring/0' value={company_id} onValueChange={(value) => setCompany_id(value)}>
                     <SelectTrigger className='bg-white rounded-4xl lg:text-[15px] sm:text-sm'>
-                        <BuildingIcon color="green" />
+                        <BuildingIcon color="#005F59" />
                         <SelectValue placeholder="Company" />
                     </SelectTrigger>
                     <SelectContent className={'rounded-4xl'}>
@@ -143,15 +143,12 @@ const JobListing = () => {
 
                 
                 <Button onClick={clearFilters} variant='default' className={'bg-white font-normal text-slate-500/90 sm:w-1/5 lg:w-1/9 hover:bg-white cursor-pointer'}>
-                <Trash2Icon color='green' size={"17"}></Trash2Icon>
+                <Trash2Icon color='#005F59' size={"17"}></Trash2Icon>
                     Clear Filters
                 </Button>
 
             </form>
-
-
-
-
+            
             {loadingJobs && (
                 // TODO: cliploader's margin to be a bit more at the top, mt not working
                 <ClipLoader radius={"23px"} cssOverride={override} color={"green"} />
