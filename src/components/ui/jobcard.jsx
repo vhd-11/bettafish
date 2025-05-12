@@ -74,7 +74,7 @@ const JobCard = ({
 
         <div className='flex justify-center'>
         <Link to={`/job/${job.id}`}>
-          <Button variant={"default"} className={"w-full lg:text-sm sm:text-xs cursor-pointer"}>
+          <Button variant={"default"} className={"w-full lg:text-sm text-xs cursor-pointer"}>
             Details
           </Button>
         </Link>
@@ -86,8 +86,8 @@ const JobCard = ({
 
                 {saved ? (
 
-                  <BookmarkIcon size={20} strokeWidth={2.1} stroke="black" fill="black" />) : (
-                  <BookmarkIcon className='rounded-3xl' size={37} strokeWidth={2.1} stroke="black"  />
+                  <BookmarkIcon size={24} strokeWidth={1.1} stroke="black" fill="black" />) : (
+                  <BookmarkIcon className='rounded-3xl' size={24} strokeWidth={1.6} stroke="black"  />
                 )}
 
               </Button>
