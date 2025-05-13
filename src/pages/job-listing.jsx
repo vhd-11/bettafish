@@ -148,9 +148,8 @@ const JobListing = () => {
                 </Button>
 
             </form>
-            
+
             {loadingJobs && (
-                // TODO: cliploader's margin to be a bit more at the top, mt not working
                 <ClipLoader radius={"23px"} cssOverride={override} color={"green"} />
             )}
 
