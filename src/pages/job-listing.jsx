@@ -38,6 +38,11 @@ const JobListing = () => {
         data: companies = [],
     } = useFetch(getCompanies);
 
+    useEffect(() => {
+        if (isLoaded) fnCompanies();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isLoaded])
+
     const {
         fn: fnJobs,
         data: dataJobs,
@@ -48,10 +53,7 @@ const JobListing = () => {
         searchQuery,
     });
 
-    useEffect(() => {
-        if (isLoaded) fnCompanies();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isLoaded])
+
 
     console.log("Data1: ", dataJobs);
 
@@ -110,7 +112,7 @@ const JobListing = () => {
 
 
 
-               {/* TODO: make filters collapsible */}
+                {/* TODO: make filters collapsible */}
                 <Select className='lg:h-20 border-none focus:ring-0 focus-visible:ring-ring/0' value={location} onValueChange={(value) => setLocation(value)}>
                     <SelectTrigger className='bg-transparent rounded-4xl lg:text-[15px] sm:text-sm  cursor-pointer focus:bg-transparent focus:border-2 focus:border-teal-700/46'>
                         <MapPlusIcon color="#005F59" />
@@ -141,9 +143,9 @@ const JobListing = () => {
                     </SelectContent>
                 </Select>
 
-                
+
                 <Button onClick={clearFilters} variant='default' className={'bg-gray-200 font-normal text-slate-500/90 sm:w-1/5 lg:w-1/9 cursor-pointer hover:bg-transparent hover:border-2 hover:border-teal-700/46'}>
-                <Trash2Icon color='#005F59' size={"17"}></Trash2Icon>
+                    <Trash2Icon color='#005F59' size={"17"}></Trash2Icon>
                     Clear Filters
                 </Button>
 

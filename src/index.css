@@ -125,3 +125,19 @@
   color: #697282;
   background-color: var(--background);
 }
+
+.wmde-markdown-var, .w-md-editor-toolbar {
+  background-color: black;
+}
+
+.w-md-editor-toolbar ul li button {
+  color:#005F59;
+}
+
+:hover.w-md-editor-toolbar ul li button {
+  background: transparent;
+}
+
+:focus.w-md-editor-toolbar ul li button {
+  color: #00a59a;
+}
