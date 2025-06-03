@@ -29,6 +29,21 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      
+
+    ],
+  },
+  {
+    element: <JobDeetsLayout />,
+    children: [
+      {
+        path: "/job/:id",
+        element: (
+          <ProtectedRoute>
+            <JobPage />
+          </ProtectedRoute>
+        ),
+      },
       {
         path: "/job-listing",
         element: (
@@ -59,20 +74,6 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <MyJob />
-          </ProtectedRoute>
-        ),
-      },
-
-    ],
-  },
-  {
-    element: <JobDeetsLayout />,
-    children: [
-      {
-        path: "/job/:id",
-        element: (
-          <ProtectedRoute>
-            <JobPage />
           </ProtectedRoute>
         ),
       },

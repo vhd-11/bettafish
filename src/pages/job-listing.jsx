@@ -9,6 +9,7 @@ import { getCompanies } from '@/api/apiCompanies';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectGroup, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 import { State } from 'country-state-city';
 import { Building2Icon, BuildingIcon, MapPlusIcon, PinIcon, RemoveFormattingIcon, SearchCheckIcon, SearchIcon, SearchSlashIcon, StarOff, Trash2Icon, TrashIcon } from 'lucide-react';
@@ -96,27 +97,26 @@ const JobListing = () => {
 
             <form onSubmit={handleSearch} className='flex mt-10 ml-5 justify-center gap-4 items-center flex-col sm:flex-row'>
                 <div className='relative'>
-                    <Button type='submit' className={'absolute left-0.1 top-0 bottom-0 px-3 w-9 lg:h-10 sm:h-8 sm:w-10 lg:w-13 cursor-pointer rounded-4xl bg-teal-700'} variant='default'>
+                    <Button type='submit' className={'absolute left-0.1 top-0 bottom-0 px-3 w-15 h-13 lg:h-10 sm:h-8 sm:w-10 lg:w-13 cursor-pointer rounded-4xl bg-teal-700 hover:bg-teal-600'} variant='default'>
                         <SearchIcon></SearchIcon>
                     </Button>
                     <Input
                         type='text'
-                        placeholder='Search for job'
+                        placeholder='Search for jobs'
                         name='search-query'
-                        className={'placeholder:text-slate-400/70 focus:outline-none outline-none border-none bg-white/95 rounded-4xl lg:h-10 sm:h-8 sm:w-50 lg:w-70 pl-12 lg:pl-15 lg:placeholder:text-base lg:text-base sm:placeholder:text-sm sm:text-sm'}
+                        className={'placeholder:pl-4 text-slate-400/70   bg-gray-200 rounded-4xl h-13 w-full sm:h-8 sm:w-50 lg:w-70 pl-12 lg:pl-15 lg:placeholder:text-base lg:text-base sm:placeholder:text-sm sm:text-sm cursor-pointer focus:bg-transparent focus:border-3 focus:border-teal-700/46 caret-teal-700'}
                     />
                 </div>
 
 
 
-                {/* TODO:remove that weird grey ring around locations filter  */}
-                {/* TODO: change font size to match viewport */}
+               {/* TODO: make filters collapsible */}
                 <Select className='lg:h-20 border-none focus:ring-0 focus-visible:ring-ring/0' value={location} onValueChange={(value) => setLocation(value)}>
-                    <SelectTrigger className='bg-white rounded-4xl lg:text-[15px] sm:text-sm'>
+                    <SelectTrigger className='bg-transparent rounded-4xl lg:text-[15px] sm:text-sm  cursor-pointer focus:bg-transparent focus:border-2 focus:border-teal-700/46'>
                         <MapPlusIcon color="#005F59" />
                         <SelectValue placeholder="Location" />
                     </SelectTrigger>
-                    <SelectContent className={'rounded-4xl'}>
+                    <SelectContent className={'rounded-4xl '}>
                         <SelectGroup className='bg-whitetext-black'>
                             {State.getStatesOfCountry("IN").map(({ name }) => {
                                 return (<SelectItem key={name} value={name}>{name}</SelectItem>
@@ -127,7 +127,7 @@ const JobListing = () => {
                 </Select>
 
                 <Select className='lg:h-20 border-none focus:ring-0 focus-visible:ring-ring/0' value={company_id} onValueChange={(value) => setCompany_id(value)}>
-                    <SelectTrigger className='bg-white rounded-4xl lg:text-[15px] sm:text-sm'>
+                    <SelectTrigger className='bg-transparent rounded-4xl lg:text-[15px] sm:text-sm cursor-pointer focus:bg-transparent focus:border-2 focus:border-teal-700/46'>
                         <BuildingIcon color="#005F59" />
                         <SelectValue placeholder="Company" />
                     </SelectTrigger>
@@ -142,7 +142,7 @@ const JobListing = () => {
                 </Select>
 
                 
-                <Button onClick={clearFilters} variant='default' className={'bg-white font-normal text-slate-500/90 sm:w-1/5 lg:w-1/9 hover:bg-white cursor-pointer'}>
+                <Button onClick={clearFilters} variant='default' className={'bg-gray-200 font-normal text-slate-500/90 sm:w-1/5 lg:w-1/9 cursor-pointer hover:bg-transparent hover:border-2 hover:border-teal-700/46'}>
                 <Trash2Icon color='#005F59' size={"17"}></Trash2Icon>
                     Clear Filters
                 </Button>
