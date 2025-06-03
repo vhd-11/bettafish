@@ -10,6 +10,10 @@ import { State } from 'country-state-city';
 import useFetch from '@/hooks/use-fetch';
 import { getCompanies } from '@/api/apiCompanies';
 import { useUser } from '@clerk/clerk-react';
+import { Progress } from "@/components/ui/progress"
+import { Form } from '@/components/ui/form';
+// import { Controller, useForm } from "react-hook-form";
+import { Label } from '@/components/ui/label';
 
 const schema = z.object({
     title: z.string().min(1, { message: "Title is required" }),
@@ -21,7 +25,7 @@ const schema = z.object({
 
 const PostJob = () => {
 
-    const {isLoaded, user} = useUser
+    const { isLoaded, user } = useUser
 
     const {
         register,
@@ -41,40 +45,44 @@ const PostJob = () => {
 
     return (
         <>
+            {/* <Progress value={45} className={"w-9/12 m-auto h-1"} /> */}
             <div className='text-7xl font-dark text-black mb-3 sm:text-5xl lg:text-7xl text-center mt-6'>
                 <span className='underline underline-offset-6 decoration-teal-700 '>Post</span> Jobs
             </div>
 
-            <form>
-                <Input placeholder="Job Title" {...register("title")} className={"m-auto w-2/3 my-12"} />
-                {errors.title && <p className='text-red-500'>{errors.title.message}</p>}
+            <form className='flex flex-col'>
+                <div className="flex flex-col items-start w-3/4 m-auto my-4">
+                    <Label htmlFor="title" >Job Title</Label>
+                    <Input placeholder="Add Title" {...register("title")} className=" my-4 focus-visible:border-teal-800/50 focus-visible:ring-teal-800/50 focus-visible:ring-1" />
+                    {errors.title && <p className='text-red-500'>{errors.title.message}</p>}
+                </div>
 
-                <Textarea placeholder="Job Description" {...register("description")} className={" w-6/7 m-auto my-12"} />
-                {errors.description && (
-                    <p className='text-red-500'>{errors.description.message}</p>
-                )}
+                <div className="flex flex-col items-start w-3/4 m-auto my-4">
+                    <Label htmlFor="description">Job Description</Label>
+                    <Textarea placeholder="Job Description" {...register("description")} className="my-4 focus-visible:border-teal-800/50 focus-visible:ring-teal-800/50 focus-visible:ring-1" />
+                    {errors.description && <p className='text-red-500'>{errors.description.message}</p>}
+                </div>
 
-                <Select className='lg:h-20 border-none focus:ring-0 focus-visible:ring-ring/0' 
-                
-                // value={location} 
-                
-                // onValueChange={(value) => setLocation(value)}
-                
-                >
-                    <SelectTrigger className='bg-transparent rounded-4xl lg:text-[15px] sm:text-sm'>
-                        <MapPlusIcon color="#005F59" />
-                        <SelectValue placeholder="Location" />
-                    </SelectTrigger>
-                    <SelectContent className={'rounded-4xl'}>
-                        <SelectGroup className='bg-whitetext-black'>
-                            {State.getStatesOfCountry("IN").map(({ name }) => {
-                                return (<SelectItem key={name} value={name}>{name}</SelectItem>
-                                );
-                            })}
-                        </SelectGroup>
-                    </SelectContent>
-                </Select>
+                <div className="flex flex-col items-start w-3/4 m-auto gap-4">
+                    <Label htmlFor="location">Job Location</Label>
+                    <Select className="w-2/3">
+                        <SelectTrigger className="w-[74vw] bg-transparent rounded-4xl text-sm outline outline-transparent border border-gray-200 focus-visible:border-teal-800/50 focus-visible:ring-teal-800/50 focus-visible:ring-1
+                    
+">
+                            <MapPlusIcon color="#005F59" />
+                            <SelectValue placeholder="Select location" />
+                        </SelectTrigger>
+                        <SelectContent className="rounded-4xl">
+                            <SelectGroup>
+                                {State.getStatesOfCountry("IN").map(({ name }) => (
+                                    <SelectItem key={name} value={name}>{name}</SelectItem>
+                                ))}
+                            </SelectGroup>
+                        </SelectContent>
+                    </Select>
+                </div>
             </form>
+
         </>
     )
 }
